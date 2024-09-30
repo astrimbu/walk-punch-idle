@@ -1,0 +1,3 @@
+extends BaseCharacterAnimations
+
+class_name RobotAnimations

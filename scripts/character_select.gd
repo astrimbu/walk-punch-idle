@@ -1,5 +1,7 @@
 extends Node2D
 
+var selected_character = "Robot"  # Default character
+
 var character = {
 	"name": "Robot",
 }
@@ -30,7 +32,10 @@ func play_idle_animation():
 
 func on_select_pressed():
 	if ResourceLoader.exists("res://scenes/main.tscn"):
+		# Pass the selected character to the main scene
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/main.tscn")
+		# Store the selected character in an autoload script or global variable
+		Global.selected_character = selected_character
 
 func toggle_highlight(sprite):
 	for s in [character_sprite, character_sprite2, character_sprite3]:
@@ -41,14 +46,17 @@ func toggle_highlight(sprite):
 	tween.tween_property(sprite.material, "shader_parameter/outline_width", 1.0, 0.2)
 	tween.parallel().tween_property(sprite.material, "shader_parameter/outline_color", Color(1, 1, 1, 1), 0.2)
 
-func _on_select_button_2_pressed():
-	toggle_highlight(character_sprite2)
-	on_select_pressed()
-
 func _on_select_button_pressed():
+	selected_character = "Robot"
 	toggle_highlight(character_sprite)
 	on_select_pressed()
 
+func _on_select_button_2_pressed():
+	selected_character = "Farmer"
+	toggle_highlight(character_sprite2)
+	on_select_pressed()
+
 func _on_select_button_3_pressed():
+	selected_character = "Smiley"
 	toggle_highlight(character_sprite3)
 	on_select_pressed()
