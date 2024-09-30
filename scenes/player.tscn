@@ -19,7 +19,7 @@
 [sub_resource type="GDScript" id="GDScript_8smjq"]
 script/source = "extends CharacterBody2D
 
-@export var speed := 40
+@export var speed := 64
 @onready var animation_player := $AnimationPlayer
 @onready var camera := $Camera2D
 @onready var sprite := $Sprite2D
@@ -57,7 +57,7 @@ func _physics_process(delta):
 		velocity = direction * speed
 		move_and_slide()
 		for i in get_slide_collision_count():
-			var collision = get_slide_collision(i)
+			var _collision = get_slide_collision(i)
 			if !mouse_held:
 				_play_idle_animation()
 				is_moving = false
@@ -77,8 +77,6 @@ func _physics_process(delta):
 
 func _play_walk_animation(target: Vector2):
 	var direction = _get_direction(target - global_position)
-	print(\"Walk direction: \", direction)
-	
 	if direction == 90:
 		animation_player.play(\"walkto\")
 	elif direction == 45 or direction == 135:
@@ -92,8 +90,6 @@ func _play_walk_animation(target: Vector2):
 
 func _play_idle_animation():
 	var direction = _get_direction(last_direction)
-	print(\"Idle direction: \", direction)
-	
 	if direction == 90:
 		animation_player.play(\"idleto\")
 	elif direction == 45 or direction == 135:
@@ -107,8 +103,6 @@ func _play_idle_animation():
 
 func _play_punch_animation():
 	var direction = _get_direction(last_direction)
-	print(\"Punch direction: \", direction)
-	
 	if direction == 90:
 		animation_player.play(\"punchto\")
 	elif direction == 45 or direction == 135:
