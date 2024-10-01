@@ -1,15 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ux0f6xnjbygq"]
+[gd_scene load_steps=13 format=3 uid="uid://ux0f6xnjbygq"]
 
-[ext_resource type="Script" path="res://scripts/character_select.gd" id="1_xn4yd"]
-[ext_resource type="Shader" path="res://scenes/CharacterSelect.gdshader" id="2_5c5c0"]
+[ext_resource type="Script" path="res://scripts/CharacterSelect.gd" id="1_xn4yd"]
 [ext_resource type="Texture2D" uid="uid://btehpe4fmw4lj" path="res://assets/idleto.png" id="2_abcde"]
 [ext_resource type="Texture2D" uid="uid://c32h0snmnbp6d" path="res://assets/smiley-idleto-normal.png" id="5_2uhpy"]
 [ext_resource type="Texture2D" uid="uid://ouvqiljn5o86" path="res://assets/farmer-idleto-normal.png" id="5_q2cpw"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xqf8"]
-shader = ExtResource("2_5c5c0")
-shader_parameter/outline_width = 1.0
-shader_parameter/outline_color = Color(1, 1, 0, 1)
 
 [sub_resource type="Animation" id="Animation_2q8kc"]
 length = 0.001
@@ -350,7 +344,6 @@ text = "Farmer
 horizontal_alignment = 1
 
 [node name="CharacterSprite2" type="Sprite2D" parent="CanvasLayer/UI"]
-material = SubResource("ShaderMaterial_2xqf8")
 position = Vector2(184, 176)
 scale = Vector2(1.75, 1.75)
 texture = ExtResource("5_q2cpw")
@@ -387,7 +380,6 @@ text = "Robot"
 horizontal_alignment = 1
 
 [node name="CharacterSprite" type="Sprite2D" parent="CanvasLayer/UI"]
-material = SubResource("ShaderMaterial_2xqf8")
 position = Vector2(320, 176)
 scale = Vector2(2, 2)
 texture = ExtResource("2_abcde")
@@ -424,7 +416,6 @@ text = "Smiley"
 horizontal_alignment = 1
 
 [node name="CharacterSprite3" type="Sprite2D" parent="CanvasLayer/UI"]
-material = SubResource("ShaderMaterial_2xqf8")
 position = Vector2(456, 176)
 scale = Vector2(1.83607, 1.75)
 texture = ExtResource("5_2uhpy")
