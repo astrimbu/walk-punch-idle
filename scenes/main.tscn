@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://b1mbewc7mg7yv"]
+[gd_scene load_steps=10 format=4 uid="uid://b1mbewc7mg7yv"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_aqnmy"]
 [ext_resource type="Texture2D" uid="uid://d3eybnjeurcf4" path="res://assets/TX Tileset Grass.png" id="2_30k4b"]
 [ext_resource type="Texture2D" uid="uid://dkov8utpnprry" path="res://assets/TX Props.png" id="3_b88kp"]
 [ext_resource type="PackedScene" uid="uid://2mm3l2yfl6x1" path="res://scenes/Player.tscn" id="4_0s7nw"]
+[ext_resource type="PackedScene" uid="uid://b3odx78ibytc5" path="res://scenes/WelcomeBot.tscn" id="5_1lxcg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bbirw"]
 texture = ExtResource("2_30k4b")
@@ -189,8 +190,10 @@ tile_map_data = PackedByteArray("AAD0//T/AAADAA8AAAD1//T/AAACAA8AAAD2//T/AAAEAA8
 tile_set = SubResource("TileSet_jwm20")
 
 [node name="player" parent="." instance=ExtResource("4_0s7nw")]
-scale = Vector2(2.43183, 2.13594)
 collision_layer = 2
+
+[node name="WelcomeBot" parent="." instance=ExtResource("5_1lxcg")]
+position = Vector2(0, -208)
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 collision_enabled = false
