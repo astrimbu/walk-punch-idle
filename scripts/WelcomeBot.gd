@@ -38,24 +38,28 @@ func _on_click_area_input_event(_viewport, event, _shape_idx):
 
 func _start_intro_quest():
 	QuestManager.start(intro_quest.id)
+	print("Intro quest started. Quest ID: ", intro_quest.id)  # Add this debug print
 	DialogueSystem.start_dialogue("WelcomeBot", [
 		"Hello, adventurer! Welcome to our world!",
 		"Would you go to the other side of the map and check if everything is alright?",
 		"Come back to me when you're done, and I'll reward you for your help!"
 	])
+	# Add this line to advance the objective after the dialogue
+	await DialogueSystem.dialogue_ended
+	QuestManager.update(intro_quest.id)
 
 func _check_quest_progress():
 	var quest = QuestManager.active_quests[intro_quest.id]
 	if quest.current_objective == 1:
 		DialogueSystem.start_dialogue("WelcomeBot", [
-			"Have you checked the other side of the map yet?",
-			"Please go there and come back when you're done."
-		])
+				"Have you checked the other side of the map yet?",
+				"Please go there and come back when you're done."
+			])
 	elif quest.current_objective == 2:
 		DialogueSystem.start_dialogue("WelcomeBot", [
-			"Ah, you're back! Thank you for your help!",
-			"Here's your reward for completing the task."
-		])
+				"Ah, you're back! Thank you for your help!",
+				"Here's your reward for completing the task."
+			])
 		QuestManager.complete(intro_quest.id)
 		# Add reward to player inventory here
 		NotificationSystem.show_notification("Received 50 XP and 100 Gold!")

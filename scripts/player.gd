@@ -28,7 +28,7 @@ func _ready():
 	add_to_group("player")
 
 func _input(event):
-	if event is InputEventKey and current_state != "punch":
+	if event is InputEventKey and current_state != "punch" and not DialogueSystem.is_dialogue_active():
 		change_state("punch")
 	
 	if event is InputEventMouseButton:
