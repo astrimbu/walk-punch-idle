@@ -10,8 +10,11 @@ var last_direction : Vector2 = Vector2.ZERO
 var character_animations: BaseCharacterAnimations
 var current_state: String = "idle"
 
+var zoom_speed = 0.05
+var min_zoom = 0.5
+var max_zoom = 2.0
+
 func _ready():
-	# Set up the correct animation handler based on the selected character
 	match Global.selected_character:
 		"Robot":
 			character_animations = RobotAnimations.new(self)
@@ -29,6 +32,7 @@ func _input(event):
 		change_state("punch")
 	
 	if event is InputEventMouseButton:
+		# click
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			mouse_held = true
 			change_state("walk")
@@ -37,6 +41,11 @@ func _input(event):
 			mouse_held = false
 			if current_state == "walk":
 				change_state("idle")
+		# zoom
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			zoom_camera(-zoom_speed)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			zoom_camera(zoom_speed)
 
 func _physics_process(_delta):
 	match current_state:
@@ -73,3 +82,8 @@ func change_state(new_state: String):
 		"punch":
 			current_state = "punch"
 			velocity = Vector2.ZERO
+
+func zoom_camera(zoom_factor):
+	var new_zoom = camera.zoom.x - zoom_factor
+	new_zoom = clamp(new_zoom, min_zoom, max_zoom)
+	camera.zoom = Vector2(new_zoom, new_zoom)

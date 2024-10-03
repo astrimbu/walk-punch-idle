@@ -2400,7 +2400,7 @@ _data = {
 "walkto45": SubResource("Animation_umhf4")
 }
 
-[node name="player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 collision_mask = 257
 script = ExtResource("1_2p0we")
 
