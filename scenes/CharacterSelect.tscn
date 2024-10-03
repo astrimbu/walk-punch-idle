@@ -381,6 +381,7 @@ text = "Robot"
 horizontal_alignment = 1
 
 [node name="CharacterSprite" type="Sprite2D" parent="CanvasLayer/UI"]
+visible = false
 position = Vector2(320, 176)
 scale = Vector2(2, 2)
 texture = ExtResource("2_abcde")

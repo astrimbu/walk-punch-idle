@@ -1,6 +1,7 @@
-extends Control
+extends CanvasLayer
 
 @onready var dialogue_label = $DialogueLabel
+@onready var welcome_bot = get_node("/root/Node2D/WelcomeBot")
 
 var current_npc_name = ""
 
@@ -19,5 +20,3 @@ func _on_dialogue_system_dialogue_ended():
 	dialogue_label.text = ""
 	dialogue_label.visible = false
 	current_npc_name = ""
-
-# Remove the _input function from here

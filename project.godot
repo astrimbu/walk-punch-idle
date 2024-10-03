@@ -28,6 +28,10 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom_font="res://assets/m5x7.ttf"
+
 [layer_names]
 
 2d_physics/layer_1="Environment"

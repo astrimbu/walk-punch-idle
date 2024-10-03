@@ -18,9 +18,7 @@ func _on_body_entered(body: Node2D):
 			if quest.current_objective == objective_index:
 				print("Updating quest and showing notification")
 				QuestManager.update(quest_id)
-				NotificationSystem.show_notification("Objective completed! Return to WelcomeBot for your reward.", 5.0)
-				await get_tree().create_timer(0.5).timeout
-				NotificationSystem.show_notification("You've reached the other side of the map. Time to return to WelcomeBot!", 5.0)
+				NotificationSystem.show_notification("Objective completed! Return to WelcomeBot for your reward.", 20.0)
 			else:
 				print("Objective index mismatch")
 		else:
