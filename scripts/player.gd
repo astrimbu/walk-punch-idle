@@ -22,7 +22,7 @@ func _ready():
 	
 	character_animations.show_sprite()
 	character_animations.connect("animation_finished", Callable(self, "_on_animation_finished"))
-
+	add_to_group("player")
 
 func _input(event):
 	if event is InputEventKey and current_state != "punch":
@@ -38,7 +38,7 @@ func _input(event):
 			if current_state == "walk":
 				change_state("idle")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match current_state:
 		"idle":
 			character_animations.play_idle_animation(last_direction)
