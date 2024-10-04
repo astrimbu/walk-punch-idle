@@ -184,7 +184,7 @@ sources/0 = SubResource("TileSetAtlasSource_5vi6l")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1wf"]
 size = Vector2(48, 48)
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_aqnmy")
 
 [node name="Ground" type="TileMapLayer" parent="."]
@@ -221,10 +221,10 @@ script = ExtResource("6_c34tn")
 
 [node name="NotificationLabel" type="Label" parent="StaticUI"]
 anchors_preset = -1
-anchor_left = -0.190625
+anchor_left = -0.178125
 anchor_top = -0.00555556
-anchor_right = -0.190625
-anchor_bottom = -0.00555556
+anchor_right = -0.196875
+anchor_bottom = -0.0111111
 offset_left = 290.0
 offset_top = 106.0
 offset_right = 590.0
@@ -269,9 +269,9 @@ anchors_preset = -1
 anchor_right = 0.175
 anchor_bottom = 0.116667
 offset_left = -56.0
-offset_top = -304.0
+offset_top = -288.0
 offset_right = -56.0
-offset_bottom = -304.0
+offset_bottom = -288.0
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 vertical_alignment = 2

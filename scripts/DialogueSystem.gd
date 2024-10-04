@@ -10,7 +10,6 @@ var can_advance = true
 func start_dialogue(npc_name, dialogue):
 	current_dialogue = dialogue
 	current_index = 0
-	print("Starting dialogue: " + npc_name + " - " + current_dialogue[current_index])
 	emit_signal("dialogue_started", npc_name, current_dialogue[current_index])
 	can_advance = true
 
@@ -20,10 +19,8 @@ func next_dialogue():
 	can_advance = false
 	current_index += 1
 	if current_index < current_dialogue.size():
-		print("Next dialogue: " + current_dialogue[current_index])
 		emit_signal("dialogue_started", "", current_dialogue[current_index])
 	else:
-		print("Dialogue ended")
 		emit_signal("dialogue_ended")
 		current_dialogue = []
 		current_index = 0

@@ -233,6 +233,8 @@ _data = {
 }
 
 [node name="WelcomeBot" type="CharacterBody2D"]
+collision_layer = 12
+collision_mask = 2
 script = ExtResource("1_14ixu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

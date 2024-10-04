@@ -24,13 +24,13 @@ func _ready():
 
 func _on_quest_manager_quest_started(quest_id):
 	var quest = QuestManager.active_quests[quest_id]
-	quest_label.text = "Current Quest: " + quest.name + "\n" + quest.get_current_objective()
+	quest_label.text = quest.name + "\n" + quest.get_current_objective()
 
 func _on_quest_manager_quest_updated(quest_id, objective):
-	quest_label.text = "Current Quest: " + QuestManager.active_quests[quest_id].name + "\n" + objective
+	quest_label.text = QuestManager.active_quests[quest_id].name + "\n" + objective
 
 func _on_quest_manager_quest_completed(quest_id):
-	quest_label.text = "Quest Completed: " + QuestManager.completed_quests[quest_id].name
+	quest_label.text = "Completed: " + QuestManager.completed_quests[quest_id].name
 
 func _on_quest_label_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

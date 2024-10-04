@@ -34,6 +34,9 @@ func _input(event):
 	if event is InputEventMouseButton:
 		# click
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			var clicked_object = get_clicked_object()
+			if clicked_object and clicked_object.is_in_group("npc"):
+				return
 			mouse_held = true
 			change_state("walk")
 			target = get_global_mouse_position()
@@ -46,6 +49,16 @@ func _input(event):
 			zoom_camera(-zoom_speed)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			zoom_camera(zoom_speed)
+
+func get_clicked_object():
+	var space = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = get_global_mouse_position()
+	query.collision_mask = 4
+	var result = space.intersect_point(query)
+	if result:
+		return result[0].collider
+	return null
 
 func _physics_process(_delta):
 	match current_state:
