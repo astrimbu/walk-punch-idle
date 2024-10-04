@@ -18,7 +18,7 @@ func _ready():
 
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("player"):
-		hide_timer.stop()  # Stop the timer if it's running
+		hide_timer.stop()
 		if quest_id in QuestManager.active_quests:
 			var quest = QuestManager.active_quests[quest_id]
 			if quest.current_objective == objective_index:

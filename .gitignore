@@ -4,5 +4,5 @@
 /android/
 *.tmp
 *.import
-TX*.png
+TX*
 Architecture.md

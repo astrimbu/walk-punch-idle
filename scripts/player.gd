@@ -18,9 +18,12 @@ var target_indicator: Node2D
 
 # draw indicator under the player
 var TargetIndicator = preload("res://scenes/TargetIndicator.tscn")
-const TARGET_INDICATOR_LAYER = 0
+const TARGET_INDICATOR_LAYER = 1
 
 func _ready():
+	# print("Player position: ", global_position)
+	# print("Player collision layer: ", collision_layer)
+	# print("Player collision mask: ", collision_mask)
 	match Global.selected_character:
 		"Robot":
 			character_animations = RobotAnimations.new(self)
@@ -41,11 +44,14 @@ func _input(event):
 		# click
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			var clicked_object = get_clicked_object()
-			print("Clicked object: ", clicked_object)
-			if clicked_object and clicked_object.is_in_group("npc"):
-				print("Clicked on NPC")
-				return
-			print("Walking to target")
+			if clicked_object:
+				if clicked_object.collision_layer & 4:  # Direct Interaction (Layer 3)
+					if clicked_object.get_parent().has_method("_on_click_area_input_event"):
+						clicked_object.get_parent()._on_click_area_input_event(null, event, 0)
+					# print("Interacted with object")
+					return
+				#if clicked_object.collision_layer & 16:  # Passive Interaction (Layer 5)
+					#don't return here, allow walking
 			change_state("walk")
 			target = get_global_mouse_position()
 			show_target_indicator(target)
@@ -59,8 +65,10 @@ func get_clicked_object():
 	var space = get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = get_global_mouse_position()
-	query.collision_mask = 8  # NPC layer (4)
-	var result = space.intersect_point(query)
+	query.collision_mask = 20  # Layer 3 (4) + Layer 5 (16) = 20
+	query.collide_with_bodies = false
+	query.collide_with_areas = true
+	var result = space.intersect_point(query, 32)
 	if not result.is_empty():
 		return result[0].collider
 	return null

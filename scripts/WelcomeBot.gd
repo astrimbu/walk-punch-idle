@@ -1,8 +1,9 @@
-extends Node
+extends CharacterBody2D
 
 @onready var ap = $AnimationPlayer
 @onready var ap2 = $AnimationPlayer2
 @onready var em = $ExclamationMark
+@onready var click_area = $ClickArea
 
 var intro_quest: Quest
 

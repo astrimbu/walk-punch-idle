@@ -115,11 +115,11 @@ _data = {
 "idleto": SubResource("Animation_e4trn")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eulmw"]
-size = Vector2(22, 40)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0frfy"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eulmw"]
+size = Vector2(22, 40)
 
 [sub_resource type="Animation" id="Animation_ljens"]
 length = 0.001
@@ -248,15 +248,17 @@ libraries = {
 "": SubResource("AnimationLibrary_tk71v")
 }
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_0frfy")
+
 [node name="ClickArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
 position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_eulmw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_0frfy")
 
 [node name="ExclamationMark" type="Sprite2D" parent="."]
 position = Vector2(0, -55)
