@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuopm2ctki3bg"]
+
+[ext_resource type="Texture2D" uid="uid://bh05y1fufgkan" path="res://assets/x.png" id="1_mtlix"]
+
+[node name="TargetIndicator" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mtlix")

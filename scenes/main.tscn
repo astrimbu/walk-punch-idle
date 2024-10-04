@@ -200,8 +200,6 @@ tile_set = SubResource("TileSet_jwm20")
 position = Vector2(0, -208)
 
 [node name="player" parent="." instance=ExtResource("4_0s7nw")]
-collision_layer = 2
-collision_mask = 265
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 collision_enabled = false
@@ -222,8 +220,8 @@ script = ExtResource("6_c34tn")
 
 [node name="NotificationLabel" type="Label" parent="StaticUI"]
 anchors_preset = -1
-anchor_left = -0.178125
-anchor_top = -0.00555556
+anchor_left = -0.196875
+anchor_top = -0.0111111
 anchor_right = -0.196875
 anchor_bottom = -0.0111111
 offset_left = 290.0

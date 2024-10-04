@@ -1,7 +1,10 @@
 extends Node
 
 signal notification_displayed(text)
+signal notification_hidden
 
-func show_notification(text: String, duration: float = 5.0):
+func show_notification(text: String):
 	emit_signal("notification_displayed", text)
-	await get_tree().create_timer(duration).timeout
+
+func hide_notification():
+	emit_signal("notification_hidden")

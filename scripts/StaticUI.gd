@@ -18,9 +18,11 @@ func _ready():
 	notification_label.anchor_top = 0
 
 	NotificationSystem.connect("notification_displayed", Callable(self, "_on_notification_system_notification_displayed"))
+	NotificationSystem.connect("notification_hidden", Callable(self, "_on_notification_system_notification_hidden"))
 
 func _on_notification_system_notification_displayed(text):
 	notification_label.text = text
 	notification_label.visible = true
-	await get_tree().create_timer(10.0).timeout
+
+func _on_notification_system_notification_hidden():
 	notification_label.visible = false

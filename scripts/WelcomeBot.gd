@@ -60,4 +60,4 @@ func _check_quest_progress():
 			])
 		await DialogueSystem.dialogue_ended
 		QuestManager.complete(intro_quest.id)
-		NotificationSystem.show_notification("Received nothing", 10.0)
+		NotificationSystem.show_notification("Received nothing!")

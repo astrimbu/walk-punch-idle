@@ -14,6 +14,12 @@ var zoom_speed = 0.05
 var min_zoom = 0.5
 var max_zoom = 2.0
 
+var target_indicator: Node2D
+
+# draw indicator under the player
+var TargetIndicator = preload("res://scenes/TargetIndicator.tscn")
+const TARGET_INDICATOR_LAYER = 0
+
 func _ready():
 	match Global.selected_character:
 		"Robot":
@@ -37,13 +43,9 @@ func _input(event):
 			var clicked_object = get_clicked_object()
 			if clicked_object and clicked_object.is_in_group("npc"):
 				return
-			mouse_held = true
 			change_state("walk")
 			target = get_global_mouse_position()
-		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-			mouse_held = false
-			if current_state == "walk":
-				change_state("idle")
+			show_target_indicator(target)
 		# zoom
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			zoom_camera(-zoom_speed)
@@ -65,8 +67,6 @@ func _physics_process(_delta):
 		"idle":
 			character_animations.play_idle_animation(last_direction)
 		"walk":
-			if mouse_held:
-				target = get_global_mouse_position()
 			var direction = (target - global_position).normalized()
 			last_direction = direction
 			velocity = direction * speed
@@ -74,10 +74,11 @@ func _physics_process(_delta):
 			move_and_slide()
 			for i in get_slide_collision_count():
 				var _collision = get_slide_collision(i)
-				if !mouse_held:
-					change_state("idle")
-			if global_position.distance_to(target) < 5 and not mouse_held:
 				change_state("idle")
+				remove_target_indicator()
+			if global_position.distance_to(target) < 5:
+				change_state("idle")
+				remove_target_indicator()
 		"punch":
 			character_animations.play_punch_animation(last_direction)
 
@@ -100,3 +101,15 @@ func zoom_camera(zoom_factor):
 	var new_zoom = camera.zoom.x - zoom_factor
 	new_zoom = clamp(new_zoom, min_zoom, max_zoom)
 	camera.zoom = Vector2(new_zoom, new_zoom)
+
+func show_target_indicator(pos: Vector2):
+	remove_target_indicator()  # Remove any existing indicator
+	target_indicator = TargetIndicator.instantiate()
+	target_indicator.global_position = pos
+	target_indicator.z_index = TARGET_INDICATOR_LAYER
+	get_parent().add_child(target_indicator)
+
+func remove_target_indicator():
+	if target_indicator:
+		target_indicator.queue_free()
+		target_indicator = null
