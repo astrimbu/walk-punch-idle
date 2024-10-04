@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8i3dlklqh0no"]
+
+[ext_resource type="Script" path="res://scripts/StaticUI.gd" id="1_re8gt"]
+[ext_resource type="Script" path="res://scripts/QuestUI.gd" id="2_6jnpk"]
+
+[node name="StaticUI" type="CanvasLayer"]
+script = ExtResource("1_re8gt")
+
+[node name="NotificationLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -0.196875
+anchor_top = -0.0111111
+anchor_right = -0.196875
+anchor_bottom = -0.0111111
+offset_left = 290.0
+offset_top = 114.0
+offset_right = 590.0
+offset_bottom = 140.0
+size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestUI" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.78125
+anchor_bottom = 1.83333
+offset_right = -500.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_6jnpk")
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestLabel" type="Label" parent="QuestUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.145625
+anchor_top = -0.559593
+anchor_right = -0.145625
+anchor_bottom = -0.38737
+offset_left = 93.2
+offset_top = 201.453
+offset_right = 393.2
+offset_bottom = 227.453
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true

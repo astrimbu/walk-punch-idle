@@ -43,7 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://cbggcnsf44670" path="res://assets/farmer-walkto.png" id="36_5cnaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7trx"]
-size = Vector2(16, 32)
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_7nkr2"]
 length = 0.001
@@ -2400,7 +2400,7 @@ _data = {
 "walkto45": SubResource("Animation_umhf4")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 265
@@ -2418,7 +2418,7 @@ hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-4, -22.5)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_k7trx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -2435,7 +2435,7 @@ hframes = 29
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, -12)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_k7trx")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
@@ -2453,7 +2453,7 @@ hframes = 30
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, -16)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_k7trx")
 
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="."]

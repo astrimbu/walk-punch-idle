@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 @onready var dialogue_label = $DialogueLabel
-@onready var welcome_bot = get_node("/root/Main/WelcomeBot")
 
 var current_npc_name = ""
 

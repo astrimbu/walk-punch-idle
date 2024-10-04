@@ -41,8 +41,11 @@ func _input(event):
 		# click
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			var clicked_object = get_clicked_object()
+			print("Clicked object: ", clicked_object)
 			if clicked_object and clicked_object.is_in_group("npc"):
+				print("Clicked on NPC")
 				return
+			print("Walking to target")
 			change_state("walk")
 			target = get_global_mouse_position()
 			show_target_indicator(target)
@@ -56,13 +59,13 @@ func get_clicked_object():
 	var space = get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = get_global_mouse_position()
-	query.collision_mask = 4
+	query.collision_mask = 8  # NPC layer (4)
 	var result = space.intersect_point(query)
-	if result:
+	if not result.is_empty():
 		return result[0].collider
 	return null
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	match current_state:
 		"idle":
 			character_animations.play_idle_animation(last_direction)
@@ -71,11 +74,13 @@ func _physics_process(_delta):
 			last_direction = direction
 			velocity = direction * speed
 			character_animations.play_walk_animation(direction)
-			move_and_slide()
-			for i in get_slide_collision_count():
-				var _collision = get_slide_collision(i)
-				change_state("idle")
-				remove_target_indicator()
+			
+			var collision = move_and_collide(velocity * delta)
+			if collision:
+				var slide_velocity = velocity.slide(collision.get_normal())
+				velocity = slide_velocity
+				move_and_collide(slide_velocity * delta)
+			
 			if global_position.distance_to(target) < 5:
 				change_state("idle")
 				remove_target_indicator()

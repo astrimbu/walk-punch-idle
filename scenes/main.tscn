@@ -1,14 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://b1mbewc7mg7yv"]
+[gd_scene load_steps=14 format=4 uid="uid://b1mbewc7mg7yv"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_aqnmy"]
 [ext_resource type="Texture2D" uid="uid://d3eybnjeurcf4" path="res://assets/TX Tileset Grass.png" id="2_30k4b"]
 [ext_resource type="Texture2D" uid="uid://dkov8utpnprry" path="res://assets/TX Props.png" id="3_b88kp"]
 [ext_resource type="PackedScene" uid="uid://2mm3l2yfl6x1" path="res://scenes/Player.tscn" id="4_0s7nw"]
 [ext_resource type="PackedScene" uid="uid://b3odx78ibytc5" path="res://scenes/WelcomeBot.tscn" id="5_1lxcg"]
-[ext_resource type="Script" path="res://scripts/StaticUI.gd" id="6_c34tn"]
-[ext_resource type="Script" path="res://scripts/QuestUI.gd" id="7_6uhhi"]
 [ext_resource type="Script" path="res://scripts/QuestArea.gd" id="7_jt8wh"]
-[ext_resource type="Script" path="res://scripts/DialogueUI.gd" id="8_3a018"]
+[ext_resource type="PackedScene" uid="uid://bedjam34vn2od" path="res://scenes/DialogueUI.tscn" id="7_juxfh"]
+[ext_resource type="PackedScene" uid="uid://c8i3dlklqh0no" path="res://scenes/StaticUI.tscn" id="8_2w2uj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bbirw"]
 texture = ExtResource("2_30k4b")
@@ -215,64 +214,6 @@ objective_index = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestArea"]
 shape = SubResource("RectangleShape2D_7c1wf")
 
-[node name="StaticUI" type="CanvasLayer" parent="."]
-script = ExtResource("6_c34tn")
+[node name="DialogueUI" parent="." instance=ExtResource("7_juxfh")]
 
-[node name="NotificationLabel" type="Label" parent="StaticUI"]
-anchors_preset = -1
-anchor_left = -0.196875
-anchor_top = -0.0111111
-anchor_right = -0.196875
-anchor_bottom = -0.0111111
-offset_left = 290.0
-offset_top = 114.0
-offset_right = 590.0
-offset_bottom = 140.0
-size_flags_horizontal = 3
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="QuestUI" type="Control" parent="StaticUI"]
-layout_mode = 3
-anchor_right = 1.78125
-anchor_bottom = 1.83333
-offset_right = -500.0
-offset_bottom = -300.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("7_6uhhi")
-metadata/_edit_use_anchors_ = true
-
-[node name="QuestLabel" type="Label" parent="StaticUI/QuestUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.145625
-anchor_top = -0.559593
-anchor_right = -0.145625
-anchor_bottom = -0.38737
-offset_left = 93.2
-offset_top = 201.453
-offset_right = 393.2
-offset_bottom = 227.453
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="DialogueUI" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-script = ExtResource("8_3a018")
-
-[node name="DialogueLabel" type="Label" parent="DialogueUI"]
-anchors_preset = -1
-anchor_right = 0.175
-anchor_bottom = 0.116667
-offset_left = -56.0
-offset_top = -288.0
-offset_right = -56.0
-offset_bottom = -288.0
-theme_override_font_sizes/font_size = 10
-horizontal_alignment = 1
-vertical_alignment = 2
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
+[node name="StaticUI" parent="." instance=ExtResource("8_2w2uj")]
