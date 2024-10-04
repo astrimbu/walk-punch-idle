@@ -201,6 +201,7 @@ position = Vector2(0, -208)
 
 [node name="player" parent="." instance=ExtResource("4_0s7nw")]
 collision_layer = 2
+collision_mask = 265
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 collision_enabled = false
@@ -226,9 +227,9 @@ anchor_top = -0.00555556
 anchor_right = -0.196875
 anchor_bottom = -0.0111111
 offset_left = 290.0
-offset_top = 106.0
+offset_top = 114.0
 offset_right = 590.0
-offset_bottom = 132.0
+offset_bottom = 140.0
 size_flags_horizontal = 3
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -249,10 +250,10 @@ metadata/_edit_use_anchors_ = true
 [node name="QuestLabel" type="Label" parent="StaticUI/QuestUI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.326875
-anchor_top = -0.559592
-anchor_right = -0.326875
-anchor_bottom = -0.387369
+anchor_left = -0.145625
+anchor_top = -0.559593
+anchor_right = -0.145625
+anchor_bottom = -0.38737
 offset_left = 93.2
 offset_top = 201.453
 offset_right = 393.2

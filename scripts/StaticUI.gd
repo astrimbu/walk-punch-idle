@@ -9,6 +9,13 @@ func _ready():
 	quest_ui.anchor_bottom = 1
 	quest_ui.offset_right = 0
 	quest_ui.offset_bottom = 0
+	
+	notification_label.offset_left = 0
+	notification_label.offset_top = 180
+	notification_label.offset_right = 640  # Adjust based on desired width
+	notification_label.offset_bottom = 180  # Adjust based on desired height
+	notification_label.anchor_left = 0
+	notification_label.anchor_top = 0
 
 	NotificationSystem.connect("notification_displayed", Callable(self, "_on_notification_system_notification_displayed"))
 
