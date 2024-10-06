@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b1mbewc7mg7yv"]
+[gd_scene load_steps=13 format=4 uid="uid://b1mbewc7mg7yv"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_aqnmy"]
 [ext_resource type="Texture2D" uid="uid://d3eybnjeurcf4" path="res://assets/TX Tileset Grass.png" id="2_30k4b"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/QuestArea.gd" id="7_jt8wh"]
 [ext_resource type="PackedScene" uid="uid://bedjam34vn2od" path="res://scenes/DialogueUI.tscn" id="7_juxfh"]
 [ext_resource type="PackedScene" uid="uid://c8i3dlklqh0no" path="res://scenes/StaticUI.tscn" id="8_2w2uj"]
+[ext_resource type="PackedScene" uid="uid://qqyd530rd6hb" path="res://scenes/Portal.tscn" id="9_l30sf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uc4f6"]
 texture = ExtResource("2_30k4b")
@@ -90,7 +91,7 @@ script = ExtResource("1_aqnmy")
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="player" parent="YSort" instance=ExtResource("4_0s7nw")]
+[node name="Player" parent="YSort" instance=ExtResource("4_0s7nw")]
 y_sort_enabled = true
 
 [node name="WelcomeBot" parent="YSort" instance=ExtResource("5_1lxcg")]
@@ -127,3 +128,9 @@ font_size = 10
 background_color = Color(1, 1, 1, 1)
 
 [node name="StaticUI" parent="." instance=ExtResource("8_2w2uj")]
+
+[node name="Portals" type="Node2D" parent="."]
+
+[node name="PortalToLevel2" parent="Portals" instance=ExtResource("9_l30sf")]
+position = Vector2(-80, -16)
+target_scene = "res://scenes/Level2.tscn"

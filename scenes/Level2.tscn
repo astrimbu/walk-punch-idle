@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bq4ie0jswscqw"]
+[gd_scene load_steps=13 format=4 uid="uid://bq4ie0jswscqw"]
 
 [ext_resource type="PackedScene" uid="uid://2mm3l2yfl6x1" path="res://scenes/Player.tscn" id="1_0yrm7"]
 [ext_resource type="Script" path="res://scripts/Level2.gd" id="1_xks0w"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/QuestArea.gd" id="5_lep2w"]
 [ext_resource type="PackedScene" uid="uid://bedjam34vn2od" path="res://scenes/DialogueUI.tscn" id="6_w6ymb"]
 [ext_resource type="PackedScene" uid="uid://c8i3dlklqh0no" path="res://scenes/StaticUI.tscn" id="7_vjo6c"]
+[ext_resource type="PackedScene" uid="uid://qqyd530rd6hb" path="res://scenes/Portal.tscn" id="9_yw7we"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aside"]
 texture = ExtResource("4_qvpla")
@@ -168,3 +169,11 @@ shape = SubResource("RectangleShape2D_q2yac")
 [node name="DialogueUI" parent="." instance=ExtResource("6_w6ymb")]
 
 [node name="StaticUI" parent="." instance=ExtResource("7_vjo6c")]
+
+[node name="Portals" type="Node2D" parent="."]
+
+[node name="PortalToMain" parent="Portals" instance=ExtResource("9_yw7we")]
+position = Vector2(-48, 48)
+scale = Vector2(0.5, 0.5)
+target_scene = "res://scenes/Main.tscn"
+is_active = true

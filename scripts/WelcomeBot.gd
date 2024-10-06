@@ -13,6 +13,7 @@ func _ready() -> void:
 	ap2.play("rotate")
 	_create_intro_quest()
 	add_to_group("npc")
+	QuestManager.connect("quest_completed", Callable(self, "_on_quest_manager_quest_completed"))
 
 func _create_intro_quest():
 	intro_quest = Quest.new(
@@ -78,3 +79,14 @@ func _check_quest_progress():
 		await DialogueSystem.dialogue_ended
 		QuestManager.complete(intro_quest.id)
 		NotificationSystem.show_notification("Received nothing!")
+
+func _on_quest_manager_quest_completed(quest_id):
+	if quest_id == "intro_quest":
+		activate_portal()
+
+func activate_portal():
+	var portal = get_tree().current_scene.get_node("Portals/PortalToLevel2")
+	if portal:
+		portal.activate()
+	else:
+		print("Portal not found in the current scene")
