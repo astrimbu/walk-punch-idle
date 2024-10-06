@@ -6,7 +6,6 @@ extends CharacterBody2D
 @onready var click_area = $ClickArea
 
 var intro_quest: Quest
-var dialogue_just_started = false
 var last_click_time = 0
 
 func _ready() -> void:
@@ -55,7 +54,6 @@ func _start_intro_quest():
 	print("WelcomeBot: _start_intro_quest called")
 	QuestManager.start(intro_quest.id)
 	em.visible = false
-	dialogue_just_started = true
 	DialogueSystem.start_dialogue("WelcomeBot", [
 			"Hello, adventurer! Welcome to our world!",
 			"Would you go to the other side of the map and check if everything is alright?",
