@@ -1,0 +1,170 @@
+[gd_scene load_steps=12 format=4 uid="uid://bq4ie0jswscqw"]
+
+[ext_resource type="PackedScene" uid="uid://2mm3l2yfl6x1" path="res://scenes/Player.tscn" id="1_0yrm7"]
+[ext_resource type="Script" path="res://scripts/Level2.gd" id="1_xks0w"]
+[ext_resource type="PackedScene" uid="uid://b3odx78ibytc5" path="res://scenes/WelcomeBot.tscn" id="2_t7f7b"]
+[ext_resource type="TileSet" uid="uid://bqmjmck20y2st" path="res://assets/TX Props.tres" id="3_sqlvr"]
+[ext_resource type="Texture2D" uid="uid://bxso4x5f5cu1o" path="res://assets/boyles-tiles.png" id="4_qvpla"]
+[ext_resource type="Script" path="res://scripts/QuestArea.gd" id="5_lep2w"]
+[ext_resource type="PackedScene" uid="uid://bedjam34vn2od" path="res://scenes/DialogueUI.tscn" id="6_w6ymb"]
+[ext_resource type="PackedScene" uid="uid://c8i3dlklqh0no" path="res://scenes/StaticUI.tscn" id="7_vjo6c"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aside"]
+texture = ExtResource("4_qvpla")
+texture_region_size = Vector2i(32, 32)
+2:0/0 = 0
+2:2/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+6:19/0 = 0
+7:19/0 = 0
+8:19/0 = 0
+9:19/0 = 0
+10:19/0 = 0
+11:19/0 = 0
+12:19/0 = 0
+13:19/0 = 0
+14:19/0 = 0
+15:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+1:3/0 = 0
+1:4/0 = 0
+1:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1kfxl"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_aside")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2yac"]
+size = Vector2(32, 32)
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_xks0w")
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="WelcomeBot" parent="YSort" instance=ExtResource("2_t7f7b")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-48, -40)
+
+[node name="player" parent="YSort" instance=ExtResource("1_0yrm7")]
+y_sort_enabled = true
+
+[node name="Environment" type="TileMapLayer" parent="YSort"]
+z_index = 1
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD9//3/AQAAAAAAAAD9//7/AQAAAAAAAAD9////AQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAD9/wIAAQABAAAAAAD+/wIAAQABAAAAAAD//wIAAQABAAAAAAAAAAIAAQABAAAAAAABAAIAAQABAAAAAAACAAIAAQABAAAAAAD+//3/AQABAAAAAAD///3/AQABAAAAAAABAP3/AQABAAAAAAACAP3/AQAAAAAAAAACAP7/AQABAAAAAAADAP7/AQABAAAAAAADAAAAAQABAAAAAAADAP//AQAEABAAAAAAAP3/AQAAABAAAAD///z/AQAAAAAAAAABAPz/AQAAAAAAAAD///v/AQAAAAMAAAABAPv/AQAAAAMAAAD+//v/AQABAAMAAAACAPv/AQABAAMAAAADAPv/AQABAAMAAAD9//v/AQABAAMAAAD8//v/AQABAAMAAAD7//v/AQABAAMAAAAEAPv/AQABAAMAAAAFAPv/AQABAAMAAAAGAPv/AQABAAMAAAAHAPv/AQABAAMAAAAIAPv/AQABAAMAAAAJAPv/AQABAAMAAAD6//v/AQABAAMAAAD5//v/AQABAAMAAAD4//v/AQABAAMAAAAKAPv/AQABAAMAAAALAPv/AQAAAAMAAAANAPv/AQAAAAMAAAD3//v/AQABAAMAAAD2//v/AQABAAMAAAD1//v/AQABAAMAAAD0//v/AQABAAMAAAAEAP7/AQABAAUAAAAEAP3/AQAAAAUAAAAFAP3/AQABAAUAAAAGAP3/AQABAAUAAAAHAP3/AQABAAUAAAAIAP3/AQABAAUAAAAJAP3/AQABAAUAAAAKAP3/AQABAAUAAAALAP3/AQABAAUAAAANAP3/AQABAAUAAAAOAP3/AQABAAUAAAAPAP3/AQABAAUAAAAEAAAAAQAAAAUAAAAEAAEAAQAAAAUAAAAEAAIAAQAAAAUAAAAEAAMAAQAAAAUAAAAEAAQAAQAAAAUAAAAEAAUAAQAAAAUAAAAEAAYAAQAAAAUAAAAEAAcAAQAAAAUAAAAEAAgAAQAAAAUAAAAEAAkAAQAAAAUAAAAEAAoAAQAAAAUAAAAEAAsAAQAAAAUAAAAQAP3/AQABAAUAAAAOAPv/AQABAAMAAAAPAPv/AQABAAMAAAAQAPv/AQABAAMAAAALAPz/AQAAAAUAAAANAPz/AQAAAAUAAAAMAP3/AQABABAAAADz//v/AQABAAMAAADy//v/AQABAAMAAADx//v/AQABAAMAAADw//v/AQABAAMAAADv//v/AQABAAMAAADu//v/AQABAAMAAAAEAAwAAQAAAAUAAAAEAA0AAQAAAAUAAAAEAA4AAQAAAAUAAAAEAA8AAQAAAAUAAAAEABAAAQAAAAUAAAA=")
+tile_set = ExtResource("3_sqlvr")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAP//AAAAAAcAAAD/////AAAAAAYAAAABAP7/AAAAAAcAAAAAAP7/AAAAAAYAAAD///7/AAAAAAcAAAD+//7/AAAAAAYAAAD+////AAAAAAcAAAD+/wAAAAAAAAYAAAD+/wEAAAAAAAcAAAD//wEAAAAAAAYAAAAAAAEAAAAAAAcAAAABAAAAAAAAAAcAAAABAP//AAAAAAYAAAABAAEAAAAAAAYAAAACAP//AAAAAAcAAAADAP//AAAAAAYAAAAAAP3/AAAAAAcAAAAAAPz/AAAAAAYAAAAAAPv/AAAAAA0AAAD///r/AAAAAA0AAAABAPr/AAAAAA0AAAADAPr/AAAAAA0AAAD9//r/AAAAAA0AAAD7//r/AAAAAA0AAAD5//r/AAAAAA0AAAD3//r/AAAAAA0AAAAFAPr/AAAAAA0AAAAHAPr/AAAAAA0AAAAJAPr/AAAAAA0AAAD4//r/AAAAAAYAAAD6//r/AAAAAAYAAAD8//r/AAAAAAYAAAD+//r/AAAAAAYAAAAAAPr/AAAAAAYAAAACAPr/AAAAAAYAAAAEAPr/AAAAAAYAAAAGAPr/AAAAAAYAAAAIAPr/AAAAAAYAAAD3//n/AAAAAAYAAAD5//n/AAAAAAYAAAD7//n/AAAAAAYAAAD9//n/AAAAAAYAAAD///n/AAAAAAYAAAABAPn/AAAAAAYAAAADAPn/AAAAAAYAAAAFAPn/AAAAAAYAAAAHAPn/AAAAAAYAAAAJAPn/AAAAAAYAAAD4//n/AAAAAA0AAAD6//n/AAAAAA0AAAD8//n/AAAAAA0AAAD+//n/AAAAAA0AAAAAAPn/AAAAAA0AAAACAPn/AAAAAA0AAAAEAPn/AAAAAA0AAAAGAPn/AAAAAA0AAAAIAPn/AAAAAA0AAAA=")
+tile_set = SubResource("TileSet_1kfxl")
+collision_enabled = false
+
+[node name="QuestArea" type="Area2D" parent="."]
+position = Vector2(40, 40)
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("5_lep2w")
+quest_id = "intro_quest"
+objective_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestArea"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_q2yac")
+
+[node name="DialogueUI" parent="." instance=ExtResource("6_w6ymb")]
+
+[node name="StaticUI" parent="." instance=ExtResource("7_vjo6c")]

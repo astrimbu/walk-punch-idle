@@ -1,3 +1,3 @@
 extends Node
 
-var selected_character = "Robot"  # Default character
+var selected_character = "Smiley"  # Default character

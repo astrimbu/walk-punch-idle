@@ -261,6 +261,7 @@ position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_eulmw")
 
 [node name="ExclamationMark" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(0, -55)
 texture = ExtResource("3_b8j7p")
 hframes = 20

@@ -48,8 +48,7 @@ func _input(event):
 				if clicked_object.collision_layer & 4:  # Direct Interaction (Layer 3)
 					if clicked_object.get_parent().has_method("_on_click_area_input_event"):
 						clicked_object.get_parent()._on_click_area_input_event(null, event, 0)
-					# print("Interacted with object")
-					return
+						return
 				#if clicked_object.collision_layer & 16:  # Passive Interaction (Layer 5)
 					#don't return here, allow walking
 			change_state("walk")
@@ -116,7 +115,7 @@ func zoom_camera(zoom_factor):
 	camera.zoom = Vector2(new_zoom, new_zoom)
 
 func show_target_indicator(pos: Vector2):
-	remove_target_indicator()  # Remove any existing indicator
+	remove_target_indicator()
 	target_indicator = TargetIndicator.instantiate()
 	target_indicator.global_position = pos
 	target_indicator.z_index = TARGET_INDICATOR_LAYER

@@ -2428,13 +2428,11 @@ libraries = {
 autoplay = "idleto"
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, -16)
 texture = ExtResource("16_xah1e")
 hframes = 29
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_k7trx")
 
@@ -2460,3 +2458,11 @@ shape = SubResource("RectangleShape2D_k7trx")
 libraries = {
 "": SubResource("AnimationLibrary_0jx6b")
 }
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+visible = false
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="."]
