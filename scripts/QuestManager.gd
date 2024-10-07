@@ -8,8 +8,19 @@ signal quest_started(quest_id)
 signal quest_updated(quest_id, objective)
 signal quest_completed(quest_id)
 
-func add(quest_id, quest_data):
-	available_quests[quest_id] = quest_data
+func add_from_database(quest_id: String):
+	var quest_data = QuestDatabase.get_quest(quest_id)
+	if quest_data:
+		var quest = Quest.new(
+			quest_data.id,
+			quest_data.name,
+			quest_data.description,
+			quest_data.objectives,
+			quest_data.reward
+		)
+		available_quests[quest_id] = quest
+	else:
+		print("Quest not found in database: ", quest_id)
 
 func start(quest_id):
 	if quest_id in available_quests:

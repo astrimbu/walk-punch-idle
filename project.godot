@@ -21,6 +21,7 @@ Global="*res://scripts/Global.gd"
 QuestManager="*res://scripts/QuestManager.gd"
 NotificationSystem="*res://scripts/NotificationSystem.gd"
 DialogueSystem="*res://scripts/DialogueSystem.gd"
+QuestDatabase="*res://scripts/QuestDatabase.gd"
 
 [display]
 

@@ -16,18 +16,8 @@ func _ready() -> void:
 	QuestManager.connect("quest_completed", Callable(self, "_on_quest_manager_quest_completed"))
 
 func _create_intro_quest():
-	intro_quest = Quest.new(
-		"intro_quest",
-		"Intro Quest",
-		"Help WelcomeBot with a simple task",
-		[
-			"Talk to WelcomeBot",
-			"Go to the other side of the map",
-			"Return to WelcomeBot"
-		],
-		{"experience": 50, "gold": 100}
-	)
-	QuestManager.add(intro_quest.id, intro_quest)
+	QuestManager.add_from_database("intro_quest")
+	intro_quest = QuestManager.available_quests["intro_quest"]
 
 func _on_click_area_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
