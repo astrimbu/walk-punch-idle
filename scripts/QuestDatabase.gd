@@ -11,8 +11,18 @@ var quests = {
 			"Return to WelcomeBot"
 		],
 		{"experience": 50, "gold": 100}
+	),
+	"red_quest": QuestData.new(
+		"red_quest",
+		"Red Quest",
+		"Title of Red Quest",
+		[
+			"Do the first thing",
+			"Do the second thing",
+			"Return to RedBot"
+		],
+		{"experience": 100, "gold": 500}
 	)
-	# Add more quests here as needed
 }
 
 func get_quest(quest_id: String) -> QuestData:

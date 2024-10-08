@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var dialogue_label = $DialogueLabel
 
 @export var dialogue_position: Vector2 = Vector2.ZERO
-@export var dialogue_size: Vector2 = Vector2(400, 100)
+@export var dialogue_size: Vector2 = Vector2(64, 1)
 @export var font_size: int = 16
 @export var background_color: Color = Color.BLACK
 

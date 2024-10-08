@@ -43,6 +43,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		# click
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print("clicked ", get_global_mouse_position())
 			var clicked_object = get_clicked_object()
 			if clicked_object:
 				if clicked_object.collision_layer & 4:  # Direct Interaction (Layer 3)
