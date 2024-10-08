@@ -4,8 +4,9 @@ extends CanvasLayer
 
 @export var dialogue_position: Vector2 = Vector2.ZERO
 @export var dialogue_size: Vector2 = Vector2(64, 1)
-@export var font_size: int = 16
-@export var background_color: Color = Color.BLACK
+@export var font_size: int = 10
+@export var color: Color = Color.WHITE
+@export var shadow_color: Color = Color(1 - color.r, 1 - color.g, 1-color.b, color.a)
 
 var current_npc_name = ""
 
@@ -19,7 +20,8 @@ func apply_settings():
 	dialogue_label.position = dialogue_position
 	dialogue_label.size = dialogue_size
 	dialogue_label.add_theme_font_size_override("font_size", font_size)
-	dialogue_label.add_theme_color_override("font_color", background_color)
+	dialogue_label.add_theme_color_override("font_color", color)
+	dialogue_label.add_theme_color_override("font_shadow_color", shadow_color)
 
 func _on_dialogue_system_dialogue_started(npc_name, dialogue):
 	if npc_name != "":

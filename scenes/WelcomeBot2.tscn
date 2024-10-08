@@ -9,7 +9,7 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuu1y"]
 size = Vector2(32, 34)
 
-[node name="WelcomeBot2" type="CharacterBody2D"]
+[node name="WelcomeBot2" type="CharacterBody2D" groups=["npc"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_isfin")

@@ -126,7 +126,6 @@ shape = SubResource("CircleShape2D_ub5h2")
 dialogue_position = Vector2(-56, -388)
 dialogue_size = Vector2(112, 142)
 font_size = 10
-background_color = Color(1, 1, 1, 1)
 
 [node name="StaticUI" parent="." instance=ExtResource("8_2w2uj")]
 

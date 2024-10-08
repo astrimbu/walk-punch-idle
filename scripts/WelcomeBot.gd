@@ -6,7 +6,6 @@ extends NPC
 func _ready() -> void:
 	super._ready()
 
-
 func _setup_animations():
 	ap.play("idleto")
 	ap2.play("rotate")
