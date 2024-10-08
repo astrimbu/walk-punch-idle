@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://bq4ie0jswscqw"]
+[gd_scene load_steps=13 format=4 uid="uid://bq4ie0jswscqw"]
 
 [ext_resource type="PackedScene" uid="uid://2mm3l2yfl6x1" path="res://scenes/Player.tscn" id="1_0yrm7"]
 [ext_resource type="Script" path="res://scripts/Level2.gd" id="1_xks0w"]
-[ext_resource type="PackedScene" uid="uid://b3odx78ibytc5" path="res://scenes/WelcomeBot.tscn" id="2_t7f7b"]
+[ext_resource type="PackedScene" uid="uid://coxr04h1m272f" path="res://scenes/WelcomeBot2.tscn" id="2_f18ct"]
 [ext_resource type="TileSet" uid="uid://bqmjmck20y2st" path="res://assets/TX Props.tres" id="3_sqlvr"]
-[ext_resource type="Script" path="res://scripts/RedBot.gd" id="3_y8yci"]
 [ext_resource type="Texture2D" uid="uid://bxso4x5f5cu1o" path="res://assets/boyles-tiles.png" id="4_qvpla"]
 [ext_resource type="Script" path="res://scripts/QuestArea.gd" id="5_lep2w"]
 [ext_resource type="PackedScene" uid="uid://bedjam34vn2od" path="res://scenes/DialogueUI.tscn" id="6_w6ymb"]
@@ -136,14 +135,12 @@ script = ExtResource("1_xks0w")
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="WelcomeBot" parent="YSort" instance=ExtResource("2_t7f7b")]
+[node name="WelcomeBot2" parent="YSort" instance=ExtResource("2_f18ct")]
 z_index = 1
-y_sort_enabled = true
-position = Vector2(-48, -40)
-script = ExtResource("3_y8yci")
-npc_name = "RedBot"
+position = Vector2(-48, -48)
+npc_name = "WelcomeBot2"
 
-[node name="player" parent="YSort" instance=ExtResource("1_0yrm7")]
+[node name="Player" parent="YSort" instance=ExtResource("1_0yrm7")]
 y_sort_enabled = true
 position = Vector2(16, 0)
 
@@ -159,6 +156,7 @@ tile_set = SubResource("TileSet_1kfxl")
 collision_enabled = false
 
 [node name="QuestArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(40, 40)
 collision_layer = 16
 collision_mask = 2
@@ -167,11 +165,12 @@ quest_id = "intro_quest"
 objective_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestArea"]
+visible = false
 position = Vector2(40, 8)
 shape = SubResource("RectangleShape2D_q2yac")
 
 [node name="DialogueUI" parent="." instance=ExtResource("6_w6ymb")]
-dialogue_position = Vector2(-107, -91)
+dialogue_position = Vector2(-104, -91)
 dialogue_size = Vector2(112, 1)
 
 [node name="StaticUI" parent="." instance=ExtResource("7_vjo6c")]

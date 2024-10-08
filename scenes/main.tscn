@@ -98,6 +98,7 @@ y_sort_enabled = true
 z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -208)
+npc_name = "WelcomeBot"
 
 [node name="Environment" type="TileMapLayer" parent="YSort"]
 z_index = 1

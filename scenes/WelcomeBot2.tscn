@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://coxr04h1m272f"]
+
+[ext_resource type="Script" path="res://scripts/WelcomeBot2.gd" id="1_isfin"]
+[ext_resource type="Texture2D" uid="uid://cie6en4l0qkgn" path="res://assets/boyles-monsters.png" id="2_ljlqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlqrw"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuu1y"]
+size = Vector2(32, 34)
+
+[node name="WelcomeBot2" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_isfin")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_ljlqu")
+region_enabled = true
+region_rect = Rect2(0, 353, 31, 30)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_nlqrw")
+
+[node name="ClickArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_yuu1y")
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]

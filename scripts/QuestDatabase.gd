@@ -12,14 +12,14 @@ var quests = {
 		],
 		{"experience": 50, "gold": 100}
 	),
-	"red_quest": QuestData.new(
-		"red_quest",
-		"Red Quest",
-		"Title of Red Quest",
+	"quest2": QuestData.new(
+		"quest2",
+		"Quest2",
+		"Help WelcomeBot2 with a simple task",
 		[
-			"Do the first thing",
-			"Do the second thing",
-			"Return to RedBot"
+			"Talk to WelcomeBot2",
+			"Do the thing",
+			"Return to WelcomeBot2"
 		],
 		{"experience": 100, "gold": 500}
 	)

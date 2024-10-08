@@ -5,7 +5,7 @@ extends NPC
 
 func _ready() -> void:
 	super._ready()
-	npc_name = "WelcomeBot"
+
 
 func _setup_animations():
 	ap.play("idleto")
