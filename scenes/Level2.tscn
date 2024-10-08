@@ -172,7 +172,6 @@ shape = SubResource("RectangleShape2D_q2yac")
 [node name="DialogueUI" parent="." instance=ExtResource("6_w6ymb")]
 dialogue_position = Vector2(-104, -91)
 dialogue_size = Vector2(112, 1)
-font_size = 10
 
 [node name="StaticUI" parent="." instance=ExtResource("7_vjo6c")]
 

@@ -125,7 +125,6 @@ shape = SubResource("CircleShape2D_ub5h2")
 [node name="DialogueUI" parent="." instance=ExtResource("7_juxfh")]
 dialogue_position = Vector2(-56, -388)
 dialogue_size = Vector2(112, 142)
-font_size = 10
 
 [node name="StaticUI" parent="." instance=ExtResource("8_2w2uj")]
 
