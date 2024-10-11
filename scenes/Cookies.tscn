@@ -37,6 +37,7 @@ offset_bottom = 205.0
 text = "Upgrade Clicker: 10 Cookies"
 
 [node name="UpgradeButton2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 192.0
 offset_top = 208.0
 offset_right = 448.0
@@ -44,6 +45,7 @@ offset_bottom = 229.0
 text = "Upgrade Clicker: 10 Cookies"
 
 [node name="UpgradeButton3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 192.0
 offset_top = 232.0
 offset_right = 448.0
@@ -51,6 +53,7 @@ offset_bottom = 253.0
 text = "Upgrade Clicker: 10 Cookies"
 
 [node name="UpgradeButton4" type="Button" parent="."]
+layout_mode = 0
 offset_left = 192.0
 offset_top = 256.0
 offset_right = 448.0
