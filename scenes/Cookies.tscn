@@ -13,51 +13,51 @@ script = ExtResource("1_3fg3a")
 
 [node name="CookieCounter" type="Label" parent="."]
 layout_mode = 0
-offset_top = 96.0
+offset_top = 64.0
 offset_right = 640.0
-offset_bottom = 144.0
+offset_bottom = 112.0
 theme_override_font_sizes/font_size = 60
 text = "Cookies: 0"
 horizontal_alignment = 1
 
 [node name="ClickerStatus" type="Label" parent="."]
 layout_mode = 0
-offset_top = 152.0
+offset_top = 112.0
 offset_right = 640.0
-offset_bottom = 165.0
+offset_bottom = 125.0
 text = "CPS: 1"
 horizontal_alignment = 1
 
 [node name="UpgradeButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 184.0
-offset_right = 448.0
-offset_bottom = 205.0
+offset_left = 224.0
+offset_top = 144.0
+offset_right = 416.0
+offset_bottom = 165.0
 text = "Upgrade Clicker: 10 Cookies"
 
 [node name="UpgradeButton2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 208.0
-offset_right = 448.0
-offset_bottom = 229.0
+offset_left = 224.0
+offset_top = 168.0
+offset_right = 416.0
+offset_bottom = 189.0
 text = "Upgrade Clicker: 10 Cookies"
 
 [node name="UpgradeButton3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 232.0
-offset_right = 448.0
-offset_bottom = 253.0
+offset_left = 224.0
+offset_top = 192.0
+offset_right = 416.0
+offset_bottom = 213.0
 text = "Upgrade Clicker: 10 Cookies"
 
 [node name="UpgradeButton4" type="Button" parent="."]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 256.0
-offset_right = 448.0
-offset_bottom = 277.0
+offset_left = 224.0
+offset_top = 216.0
+offset_right = 416.0
+offset_bottom = 237.0
 text = "Upgrade Clicker: 10 Cookies"
 
 [node name="AutoClickerTimer" type="Timer" parent="."]
@@ -65,25 +65,28 @@ autostart = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_top = 344.0
-offset_right = 640.0
-offset_bottom = 361.0
+offset_left = 192.0
+offset_top = 280.0
+offset_right = 448.0
+offset_bottom = 297.0
 step = 1.0
 
 [node name="ProgressLevel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 296.0
-offset_top = 328.0
+offset_top = 264.0
 offset_right = 344.0
-offset_bottom = 341.0
+offset_bottom = 277.0
 text = "Lvl 0"
 horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="TestReset" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 376.0
+offset_top = 256.0
+offset_right = 443.0
+offset_bottom = 277.0
 text = "TEST RESET
 "
 

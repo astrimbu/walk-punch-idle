@@ -3,6 +3,12 @@ extends Control
 const INITIAL_PROGRESS_THRESHOLD: float = 50.0
 const PROGRESS_MULTIPLIER: float = 2.0
 
+const PROGRESS_THRESHOLDS: Array[float] = [
+	50.0,    # Level 0
+	200.0,   # Level 1
+	1000.0,  # Level 2
+]
+
 @onready var cookie_counter = $CookieCounter
 @onready var clicker_status = $ClickerStatus
 @onready var progress_bar = $ProgressBar
@@ -25,7 +31,6 @@ var upgrade_levels: Array = [0, 0, 0, 0]
 var upgrade_costs: Array[float] = DEFAULT_UPGRADE_COSTS.duplicate()
 var upgrade_multipliers: Array = [1.15, 1.25, 1.35, 1.5]
 var progress: float = 0
-var progress_threshold: float = INITIAL_PROGRESS_THRESHOLD
 var progress_level: int = 0
 var reset_count: int = 0
 
@@ -89,10 +94,14 @@ func upgrade(index: int) -> void:
 		save_game()
 
 func update_ui() -> void:
-	# Update only non-interpolated elements
-	progress_bar.value = progress
-	progress_bar.max_value = progress_threshold
-	var progress_percentage = min((progress / progress_threshold) * 100, 100)
+	if progress_level < PROGRESS_THRESHOLDS.size():
+		progress_bar.max_value = PROGRESS_THRESHOLDS[progress_level]
+		var progress_percentage = min((progress / PROGRESS_THRESHOLDS[progress_level]) * 100, 100)
+		progress_bar.value = progress
+	else:
+		progress_bar.max_value = 100
+		progress_bar.value = 100
+
 	progress_level_label.text = "Lvl: %d" % progress_level
 	update_upgrade_buttons()
 
@@ -114,11 +123,11 @@ func update_upgrade_buttons() -> void:
 		button.visible = i <= progress_level
 
 func check_progress() -> void:
-	if progress >= progress_threshold:
+	if progress_level < PROGRESS_THRESHOLDS.size() and progress >= PROGRESS_THRESHOLDS[progress_level]:
 		progress = 0
 		progress_level += 1
-		progress_threshold = INITIAL_PROGRESS_THRESHOLD * pow(PROGRESS_MULTIPLIER, progress_level)
-		unlock_next_upgrade()
+		if progress_level < PROGRESS_THRESHOLDS.size():
+			unlock_next_upgrade()
 
 func unlock_next_upgrade() -> void:
 	if progress_level < upgrade_buttons.size():
@@ -130,7 +139,6 @@ func reset_upgrade_costs() -> void:
 func reset_progress_level() -> void:
 	progress_level = 0
 	progress = 0
-	progress_threshold = INITIAL_PROGRESS_THRESHOLD
 
 func save_game() -> void:
 	var save_data = {
@@ -140,7 +148,6 @@ func save_game() -> void:
 		"upgrade_costs": upgrade_costs,
 		"upgrade_multipliers": upgrade_multipliers,
 		"progress": progress,
-		"progress_threshold": progress_threshold,
 		"progress_level": progress_level,
 		"reset_count": reset_count
 	}
@@ -160,7 +167,6 @@ func load_game() -> void:
 		upgrade_costs = save_data.get("upgrade_costs", DEFAULT_UPGRADE_COSTS.duplicate())
 		upgrade_multipliers = save_data.get("upgrade_multipliers", [1.15, 1.25, 1.35, 1.5])
 		progress = save_data.get("progress", 0.0)
-		progress_threshold = save_data.get("progress_threshold", 100.0)
 		progress_level = save_data.get("progress_level", 0)
 		reset_count = save_data.get("reset_count", 0)
 
