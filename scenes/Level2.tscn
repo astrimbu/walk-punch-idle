@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=4 uid="uid://bq4ie0jswscqw"]
+[gd_scene load_steps=15 format=4 uid="uid://bq4ie0jswscqw"]
 
 [ext_resource type="PackedScene" uid="uid://2mm3l2yfl6x1" path="res://scenes/Player.tscn" id="1_0yrm7"]
 [ext_resource type="Script" path="res://scripts/Level2.gd" id="1_xks0w"]
 [ext_resource type="PackedScene" uid="uid://coxr04h1m272f" path="res://scenes/WelcomeBot2.tscn" id="2_f18ct"]
+[ext_resource type="PackedScene" uid="uid://c7inlpr64iuss" path="res://scenes/CookieBot.tscn" id="3_c8w0o"]
 [ext_resource type="TileSet" uid="uid://bqmjmck20y2st" path="res://assets/TX Props.tres" id="3_sqlvr"]
 [ext_resource type="Texture2D" uid="uid://bxso4x5f5cu1o" path="res://assets/boyles-tiles.png" id="4_qvpla"]
 [ext_resource type="Script" path="res://scripts/QuestArea.gd" id="5_lep2w"]
 [ext_resource type="PackedScene" uid="uid://bedjam34vn2od" path="res://scenes/DialogueUI.tscn" id="6_w6ymb"]
 [ext_resource type="PackedScene" uid="uid://c8i3dlklqh0no" path="res://scenes/StaticUI.tscn" id="7_vjo6c"]
 [ext_resource type="PackedScene" uid="uid://qqyd530rd6hb" path="res://scenes/Portal.tscn" id="9_yw7we"]
+[ext_resource type="PackedScene" uid="uid://b668dsix7ohq1" path="res://scenes/Cookies.tscn" id="11_px5r4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aside"]
 texture = ExtResource("4_qvpla")
@@ -132,6 +134,10 @@ size = Vector2(32, 32)
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_xks0w")
 
+[node name="CookiesLayer" type="CanvasLayer" parent="."]
+
+[node name="Cookies" parent="CookiesLayer" instance=ExtResource("11_px5r4")]
+
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -139,6 +145,9 @@ y_sort_enabled = true
 z_index = 1
 position = Vector2(-48, -48)
 npc_name = "WelcomeBot2"
+
+[node name="CookieBot" parent="YSort" groups=["npc"] instance=ExtResource("3_c8w0o")]
+position = Vector2(81, -47)
 
 [node name="Player" parent="YSort" instance=ExtResource("1_0yrm7")]
 y_sort_enabled = true

@@ -26,7 +26,10 @@ func apply_settings():
 func _on_dialogue_system_dialogue_started(npc_name, dialogue):
 	if npc_name != "":
 		current_npc_name = npc_name
-	dialogue_label.text = current_npc_name + ": " + dialogue
+	if dialogue == "":
+		dialogue_label.text = dialogue
+	else:
+		dialogue_label.text = current_npc_name + ": " + dialogue
 	dialogue_label.visible = true
 
 func _on_dialogue_system_dialogue_ended():

@@ -9,17 +9,17 @@ const PROGRESS_THRESHOLDS: Array[float] = [
 	1000.0,  # Level 2
 ]
 
-@onready var cookie_counter = $CookieCounter
-@onready var clicker_status = $ClickerStatus
-@onready var progress_bar = $ProgressBar
-@onready var progress_level_label = $ProgressLevel
+@onready var cookie_counter = $Container/CookieCounter
+@onready var clicker_status = $Container/ClickerStatus
+@onready var progress_bar = $Container/ProgressBar
+@onready var progress_level_label = $Container/ProgressLevel
 @onready var upgrade_buttons = [
-	$UpgradeButton,
-	$UpgradeButton2,
-	$UpgradeButton3,
-	$UpgradeButton4
+	$Container/UpgradeButton,
+	$Container/UpgradeButton2,
+	$Container/UpgradeButton3,
+	$Container/UpgradeButton4
 ]
-@onready var test_reset_button = $TestReset
+@onready var test_reset_button = $Container/TestReset
 
 const DEFAULT_UPGRADE_COSTS: Array[float] = [1.0, 10.0, 10.0, 1000.0]
 
@@ -56,6 +56,7 @@ func _on_AutoClickerTimer_timeout() -> void:
 	save_game()
 
 func _on_UpgradeButton_pressed() -> void:
+	print('test')
 	upgrade(0)
 
 func _on_UpgradeButton2_pressed() -> void:
@@ -210,3 +211,25 @@ func update_display(delta: float) -> void:
 	# Update UI with interpolated values
 	cookie_counter.text = "Cookies: %s" % format_large_number(displayed_cookies)
 	clicker_status.text = "CPS: %s | Resets: %d" % [format_large_number(displayed_cps), reset_count]
+
+func handle_click():
+	cookies += 1
+	progress += 1
+	update_ui()
+	update_upgrade_buttons()
+	check_progress()
+	save_game()
+
+#func _input(event):
+	#if visible and event is InputEventMouseButton:
+		#get_viewport().set_input_as_handled()
+
+func show_ui():
+	show()
+
+func hide_ui():
+	hide()
+
+
+func _on_XButton_pressed() -> void:
+	hide_ui()

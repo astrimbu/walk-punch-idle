@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7inlpr64iuss"]
+
+[ext_resource type="Texture2D" uid="uid://dk2ec3kcbtfjd" path="res://assets/cookies.png" id="1_nxagu"]
+[ext_resource type="Script" path="res://scripts/CookieBot.gd" id="1_pfjvc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cun5s"]
+size = Vector2(38, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0i7i"]
+size = Vector2(48, 51)
+
+[node name="CookieBot" type="CharacterBody2D"]
+z_index = 1
+position = Vector2(1, -1)
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_pfjvc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("1_nxagu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -7.5)
+shape = SubResource("RectangleShape2D_cun5s")
+
+[node name="ClickArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(-2, -23.5)
+shape = SubResource("RectangleShape2D_p0i7i")
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_ClickArea_input_event"]

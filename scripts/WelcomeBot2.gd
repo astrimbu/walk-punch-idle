@@ -12,7 +12,13 @@ func _start_quest():
 	QuestManager.start(quest.id)
 	DialogueSystem.start_dialogue(npc_name, [
 		"Hey, you found Level 2, nice.",
+		"",
+		"",
+		"?",
+		"",
 		"I'm still working on the quest...",
+		"Come back later!",
+		"",
 	])
 	print(npc_name, ": Dialogue started")
 	await DialogueSystem.dialogue_ended
