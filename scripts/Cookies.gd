@@ -27,10 +27,10 @@ var cookies: float = 0.0
 var clicker_level: int = 0
 var cps: float = 1.0
 
-var upgrade_levels: Array = [0, 0, 0, 0]
+var upgrade_levels: Array[int] = [0, 0, 0, 0]
 var upgrade_costs: Array[float] = DEFAULT_UPGRADE_COSTS.duplicate()
-var upgrade_multipliers: Array = [1.15, 1.25, 1.35, 1.5]
-var progress: float = 0
+var upgrade_multipliers: Array[float] = [1.15, 1.25, 1.35, 1.5]
+var progress: float = 0.0
 var progress_level: int = 0
 var reset_count: int = 0
 
@@ -38,7 +38,6 @@ var displayed_cookies: float = 0.0
 var displayed_cps: float = 1.0
 
 func _ready() -> void:
-	test_reset_button.connect("pressed", _on_TestReset_pressed)
 	load_game()
 	update_ui()
 	update_upgrade_buttons()
@@ -56,7 +55,6 @@ func _on_AutoClickerTimer_timeout() -> void:
 	save_game()
 
 func _on_UpgradeButton_pressed() -> void:
-	print('test')
 	upgrade(0)
 
 func _on_UpgradeButton2_pressed() -> void:
@@ -69,6 +67,10 @@ func _on_UpgradeButton4_pressed() -> void:
 	upgrade(3)
 
 func upgrade(index: int) -> void:
+	if index >= upgrade_costs.size() or index >= upgrade_multipliers.size():
+		print("Error: Upgrade index out of bounds")
+		return
+	
 	if cookies >= upgrade_costs[index]:
 		cookies -= upgrade_costs[index]
 		upgrade_levels[index] += 1
@@ -152,24 +154,19 @@ func save_game() -> void:
 		"progress_level": progress_level,
 		"reset_count": reset_count
 	}
-	var file = FileAccess.open("user://cookie_save.dat", FileAccess.WRITE)
-	file.store_var(save_data)
-	file.close()
+	SaveManager.update_cookies_state(save_data)
 
 func load_game() -> void:
-	if FileAccess.file_exists("user://cookie_save.dat"):
-		var file = FileAccess.open("user://cookie_save.dat", FileAccess.READ)
-		var save_data = file.get_var()
-		file.close()
-		
-		cookies = save_data.get("cookies", 0.0)
-		cps = save_data.get("cps", 1.0)
-		upgrade_levels = save_data.get("upgrade_levels", [0, 0, 0, 0])
-		upgrade_costs = save_data.get("upgrade_costs", DEFAULT_UPGRADE_COSTS.duplicate())
-		upgrade_multipliers = save_data.get("upgrade_multipliers", [1.15, 1.25, 1.35, 1.5])
-		progress = save_data.get("progress", 0.0)
-		progress_level = save_data.get("progress_level", 0)
-		reset_count = save_data.get("reset_count", 0)
+	var save_data = SaveManager.get_cookies_state()
+	if not save_data.is_empty():
+		cookies = save_data.get("cookies", cookies)
+		cps = save_data.get("cps", cps)
+		upgrade_levels = save_data.get("upgrade_levels", upgrade_levels)
+		upgrade_costs = save_data.get("upgrade_costs", upgrade_costs)
+		upgrade_multipliers = save_data.get("upgrade_multipliers", upgrade_multipliers)
+		progress = save_data.get("progress", progress)
+		progress_level = save_data.get("progress_level", progress_level)
+		reset_count = save_data.get("reset_count", reset_count)
 
 func _on_TestReset_pressed() -> void:
 	reset_game()

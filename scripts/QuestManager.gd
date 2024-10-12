@@ -42,6 +42,7 @@ func complete(quest_id):
 	if quest_id in active_quests:
 		completed_quests[quest_id] = active_quests[quest_id]
 		active_quests.erase(quest_id)
+		SaveManager.update_quest_state(quest_id, true)
 		emit_signal("quest_completed", quest_id)
 
 func fail(quest_id):

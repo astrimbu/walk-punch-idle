@@ -28,7 +28,7 @@ func _start_quest():
 func _check_quest_progress():
 	var active_quest = QuestManager.active_quests[quest.id]
 	if active_quest.current_objective == 1:
-		DialogueSystem.start_dialogue(npc_name, ["Have you completed the challenge yet?"])
+		DialogueSystem.start_dialogue(npc_name, ["Still no quest..."])
 	elif active_quest.current_objective == 2:
 		DialogueSystem.start_dialogue(npc_name, [
 			"Impressive! You've completed the challenge.",

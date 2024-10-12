@@ -15,10 +15,10 @@ var quests = {
 	"quest2": QuestData.new(
 		"quest2",
 		"Quest2",
-		"Help WelcomeBot2 with a simple task",
+		"There isn't a second quest yet",
 		[
 			"Talk to WelcomeBot2",
-			"Do the thing",
+			"Wait for the quest to be finished",
 			"Return to WelcomeBot2"
 		],
 		{"experience": 100, "gold": 500}

@@ -126,3 +126,6 @@ func remove_target_indicator():
 	if target_indicator:
 		target_indicator.queue_free()
 		target_indicator = null
+
+func _process(delta):
+	SaveManager.update_player_state(global_position, get_tree().current_scene.scene_file_path)
