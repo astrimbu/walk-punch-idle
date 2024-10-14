@@ -147,7 +147,7 @@ position = Vector2(-48, -48)
 npc_name = "WelcomeBot2"
 
 [node name="CookieBot" parent="YSort" groups=["npc"] instance=ExtResource("3_c8w0o")]
-position = Vector2(81, -47)
+position = Vector2(81, -49)
 
 [node name="Player" parent="YSort" instance=ExtResource("1_0yrm7")]
 y_sort_enabled = true
