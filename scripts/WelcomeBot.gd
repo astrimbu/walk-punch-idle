@@ -5,16 +5,30 @@ extends NPC
 
 func _ready() -> void:
 	super._ready()
+	_check_quest_status()
 
 func _setup_animations():
 	ap.play("idleto")
 	ap2.play("rotate")
 
+func _check_quest_status():
+	if SaveManager.is_quest_completed("intro_quest"):
+		em.visible = false
+	else:
+		_create_quest()
+
 func _create_quest():
-	QuestManager.add_from_database("intro_quest")
-	quest = QuestManager.available_quests["intro_quest"]
+	if not SaveManager.is_quest_completed("intro_quest"):
+		QuestManager.add_from_database("intro_quest")
+		quest = QuestManager.available_quests["intro_quest"]
 
 func _start_quest():
+	if SaveManager.is_quest_completed("intro_quest"):
+		DialogueSystem.start_dialogue(npc_name, [
+			"Hello again, adventurer! Thanks again for your help.",
+		])
+		return
+
 	print("WelcomeBot: _start_quest called")
 	QuestManager.start(quest.id)
 	em.visible = false
