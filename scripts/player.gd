@@ -37,6 +37,10 @@ func _ready():
 	add_to_group("player")
 
 func _input(event):
+	var cookies_ui = get_node("/root/Level2/CookiesLayer/Cookies")
+	if cookies_ui and cookies_ui.visible:
+		return
+
 	if event is InputEventKey and current_state != "punch" and not DialogueSystem.is_dialogue_active():
 		change_state("punch")
 	

@@ -217,10 +217,6 @@ func handle_click():
 	check_progress()
 	save_game()
 
-#func _input(event):
-	#if visible and event is InputEventMouseButton:
-		#get_viewport().set_input_as_handled()
-
 func show_ui():
 	show()
 
