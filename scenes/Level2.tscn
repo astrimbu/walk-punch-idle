@@ -143,11 +143,12 @@ y_sort_enabled = true
 
 [node name="WelcomeBot2" parent="YSort" instance=ExtResource("2_f18ct")]
 z_index = 1
-position = Vector2(-48, -48)
+position = Vector2(-51, -40)
+scale = Vector2(1.5, 1.5)
 npc_name = "WelcomeBot2"
 
 [node name="CookieBot" parent="YSort" groups=["npc"] instance=ExtResource("3_c8w0o")]
-position = Vector2(81, -49)
+position = Vector2(83, -49)
 
 [node name="Player" parent="YSort" instance=ExtResource("1_0yrm7")]
 y_sort_enabled = true
@@ -179,7 +180,7 @@ position = Vector2(40, 8)
 shape = SubResource("RectangleShape2D_q2yac")
 
 [node name="DialogueUI" parent="." instance=ExtResource("6_w6ymb")]
-dialogue_position = Vector2(-104, -91)
+dialogue_position = Vector2(-104, -100)
 dialogue_size = Vector2(112, 1)
 
 [node name="StaticUI" parent="." instance=ExtResource("7_vjo6c")]

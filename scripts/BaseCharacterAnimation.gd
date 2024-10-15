@@ -8,8 +8,8 @@ var animation_player: AnimationPlayer
 var sprite: Sprite2D
 
 func _init(player: CharacterBody2D):
-	animation_player = player.get_node("AnimationPlayer")
-	sprite = player.get_node("Sprite2D")
+	animation_player = player.get_node("AnimationPlayer2")
+	sprite = player.get_node("Sprite2D2")
 	animation_player.connect("animation_finished", Callable(self, "_on_animation_player_finished"))
 
 func _on_animation_player_finished(anim_name: String):

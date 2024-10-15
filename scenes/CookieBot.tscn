@@ -11,7 +11,7 @@ size = Vector2(32, 49)
 
 [node name="CookieBot" type="CharacterBody2D"]
 z_index = 1
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.67, 0.67)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_pfjvc")
