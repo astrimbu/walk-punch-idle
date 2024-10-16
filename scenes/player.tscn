@@ -1522,6 +1522,7 @@ script = ExtResource("1_2p0we")
 position = Vector2(0, -14)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -16)
 texture = ExtResource("16_xah1e")
 hframes = 29
@@ -1550,6 +1551,13 @@ visible = false
 position = Vector2(0, -16)
 texture = ExtResource("27_yvrod")
 hframes = 30
+
+[node name="Shadow" type="Sprite2D" parent="Sprite2D3"]
+modulate = Color(1, 1, 1, 0.196078)
+show_behind_parent = true
+position = Vector2(0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_pqee8")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 visible = false
