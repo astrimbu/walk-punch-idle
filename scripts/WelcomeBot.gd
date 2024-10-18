@@ -50,13 +50,13 @@ func _check_quest_progress():
 		])
 	elif active_quest.current_objective == 2:
 		DialogueSystem.start_dialogue(npc_name, [
-			"Wow you did it! That's incredible, thanks!",
+			"You're back! Thank you for checking for me.",
 			"Here's your reward for completing the task."
 		])
 		await DialogueSystem.dialogue_ended
 		QuestManager.complete(quest.id)
 		NotificationSystem.show_notification("Received nothing!")
-		var timer = get_tree().create_timer(5.0)
+		var timer = get_tree().create_timer(2.0)
 		await timer.timeout
 		NotificationSystem.hide_notification()
 
