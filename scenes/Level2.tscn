@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bq4ie0jswscqw"]
+[gd_scene load_steps=17 format=4 uid="uid://bq4ie0jswscqw"]
 
 [ext_resource type="PackedScene" uid="uid://2mm3l2yfl6x1" path="res://scenes/Player.tscn" id="1_0yrm7"]
 [ext_resource type="Script" path="res://scripts/Level2.gd" id="1_xks0w"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://c8i3dlklqh0no" path="res://scenes/StaticUI.tscn" id="7_vjo6c"]
 [ext_resource type="PackedScene" uid="uid://qqyd530rd6hb" path="res://scenes/Portal.tscn" id="9_yw7we"]
 [ext_resource type="PackedScene" uid="uid://b668dsix7ohq1" path="res://scenes/Cookies.tscn" id="11_px5r4"]
+[ext_resource type="Script" path="res://scripts/Door.gd" id="12_baarv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfks"]
+size = Vector2(32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aside"]
 texture = ExtResource("4_qvpla")
@@ -141,6 +145,21 @@ script = ExtResource("1_xks0w")
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="Door" type="StaticBody2D" parent="YSort"]
+z_index = 1
+input_pickable = true
+script = ExtResource("12_baarv")
+
+[node name="Closed" type="Sprite2D" parent="YSort/Door"]
+position = Vector2(16, -80)
+texture = ExtResource("4_qvpla")
+region_enabled = true
+region_rect = Rect2(64, 512, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Door"]
+position = Vector2(16, -80)
+shape = SubResource("RectangleShape2D_ldfks")
+
 [node name="WelcomeBot2" parent="YSort" instance=ExtResource("2_f18ct")]
 z_index = 1
 position = Vector2(-51, -40)
@@ -157,7 +176,7 @@ position = Vector2(16, 0)
 [node name="Environment" type="TileMapLayer" parent="YSort"]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD9//3/AQAAAAQAAAD9//7/AQAAAAQAAAD9////AQAAAAQAAAD9/wAAAQAAAAQAAAD9/wEAAQAAAAQAAAD9/wIAAQABAAQAAAD+/wIAAQABAAQAAAD//wIAAQABAAQAAAAAAAIAAQABAAQAAAABAAIAAQABAAQAAAD+//3/AQABAAQAAAD///3/AQABAAQAAAABAP3/AQABAAQAAAACAAIAAQABAAQAAAACAP3/AQABAAQAAAADAAIAAQABAAQAAAADAAEAAQAAAAQAAAADAAAAAQAAAAQAAAADAP//AQAAAAQAAAADAP7/AQAAAAQAAAADAP3/AQAAAAQAAAAAAP3/AQACABAAAAA=")
+tile_map_data = PackedByteArray("AAD9//3/AQAAAAQAAAD9//7/AQAAAAQAAAD9////AQAAAAQAAAD9/wAAAQAAAAQAAAD9/wEAAQAAAAQAAAD9/wIAAQABAAQAAAD+/wIAAQABAAQAAAD//wIAAQABAAQAAAAAAAIAAQABAAQAAAABAAIAAQABAAQAAAD+//3/AQABAAQAAAD///3/AQABAAQAAAABAP3/AQABAAQAAAACAAIAAQABAAQAAAACAP3/AQABAAQAAAADAAIAAQABAAQAAAADAAEAAQAAAAQAAAADAAAAAQAAAAQAAAADAP//AQAAAAQAAAADAP7/AQAAAAQAAAADAP3/AQAAAAQAAAA=")
 tile_set = ExtResource("3_sqlvr")
 
 [node name="Ground" type="TileMapLayer" parent="."]
@@ -191,3 +210,5 @@ dialogue_size = Vector2(112, 1)
 position = Vector2(-48, 48)
 scale = Vector2(0.5, 0.5)
 target_scene = "res://scenes/Main.tscn"
+
+[connection signal="quest_started" from="YSort/WelcomeBot2" to="YSort/Door" method="unlock"]

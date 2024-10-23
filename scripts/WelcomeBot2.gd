@@ -1,5 +1,7 @@
 extends NPC
 
+signal quest_started
+
 func _ready() -> void:
 	super._ready()
 
@@ -10,15 +12,11 @@ func _create_quest():
 func _start_quest():
 	print(npc_name, ": _start_quest called")
 	QuestManager.start(quest.id)
+	emit_signal("quest_started")
 	DialogueSystem.start_dialogue(npc_name, [
 		"Hey, you found Level 2, nice.",
-		"",
-		"",
-		"?",
-		"",
-		"I'm still working on the quest...",
-		"Come back later!",
-		"",
+		"I've opened the door for you.",
+		"Feel free to explore!",
 	])
 	print(npc_name, ": Dialogue started")
 	await DialogueSystem.dialogue_ended
@@ -28,7 +26,7 @@ func _start_quest():
 func _check_quest_progress():
 	var active_quest = QuestManager.active_quests[quest.id]
 	if active_quest.current_objective == 1:
-		DialogueSystem.start_dialogue(npc_name, ["Still no quest..."])
+		DialogueSystem.start_dialogue(npc_name, ["Go explore!"])
 	elif active_quest.current_objective == 2:
 		DialogueSystem.start_dialogue(npc_name, [
 			"Impressive! You've completed the challenge.",
