@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b668dsix7ohq1"]
 
-[ext_resource type="Script" path="res://scripts/Cookies.gd" id="1_3fg3a"]
+[ext_resource type="Script" uid="uid://dj01r0o1bkt1b" path="res://scripts/Cookies.gd" id="1_3fg3a"]
 
 [node name="Cookies" type="Control"]
 layout_mode = 3

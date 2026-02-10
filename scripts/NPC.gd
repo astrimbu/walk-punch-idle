@@ -31,20 +31,11 @@ func _on_click_area_input_event(_viewport, event, _shape_idx):
 			return
 		last_click_time = current_time
 
-		print("%s: Click detected at %s" % [npc_name, current_time])
-		print("Dialogue active: ", DialogueSystem.is_dialogue_active())
-		if quest:
-			print("Quest available: ", quest.id in QuestManager.available_quests)
-			print("Quest active: ", quest.id in QuestManager.active_quests)
-
 		if DialogueSystem.is_dialogue_active():
-			print("%s: Dialogue active, advancing" % npc_name)
 			DialogueSystem.next_dialogue()
 		elif quest and quest.id in QuestManager.available_quests:
-			print("%s: Starting quest" % npc_name)
 			_start_quest()
 		elif quest and quest.id in QuestManager.active_quests:
-			print("%s: Checking quest progress" % npc_name)
 			_check_quest_progress()
 
 func _start_quest():

@@ -38,6 +38,7 @@ var displayed_cookies: float = 0.0
 var displayed_cps: float = 1.0
 
 func _ready() -> void:
+	add_to_group("cookies_ui")
 	load_game()
 	update_ui()
 	update_upgrade_buttons()

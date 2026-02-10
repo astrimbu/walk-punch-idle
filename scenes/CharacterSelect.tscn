@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ux0f6xnjbygq"]
 
-[ext_resource type="Script" path="res://scripts/CharacterSelect.gd" id="1_xn4yd"]
+[ext_resource type="Script" uid="uid://dkgsu7v3htiwp" path="res://scripts/CharacterSelect.gd" id="1_xn4yd"]
 [ext_resource type="Texture2D" uid="uid://c32h0snmnbp6d" path="res://assets/smiley-idleto-normal.png" id="5_2uhpy"]
 [ext_resource type="Texture2D" uid="uid://ouvqiljn5o86" path="res://assets/farmer-idleto-normal.png" id="5_q2cpw"]
 
@@ -60,7 +60,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_avw5w"]
 _data = {
-"idleto-normal": SubResource("Animation_ssx7q")
+&"idleto-normal": SubResource("Animation_ssx7q")
 }
 
 [sub_resource type="Animation" id="Animation_tbyy2"]
@@ -170,8 +170,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_trpvs"]
 _data = {
-"RESET": SubResource("Animation_tbyy2"),
-"idleto-normal": SubResource("Animation_wmfmu")
+&"RESET": SubResource("Animation_tbyy2"),
+&"idleto-normal": SubResource("Animation_wmfmu")
 }
 
 [node name="CharacterSelect" type="Node2D"]
@@ -277,14 +277,14 @@ hframes = 29
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="CanvasLayer"]
 root_node = NodePath(".")
 libraries = {
-"": SubResource("AnimationLibrary_avw5w")
+&"": SubResource("AnimationLibrary_avw5w")
 }
 autoplay = "idleto-normal"
 
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="CanvasLayer"]
 root_node = NodePath(".")
 libraries = {
-"": SubResource("AnimationLibrary_trpvs")
+&"": SubResource("AnimationLibrary_trpvs")
 }
 autoplay = "idleto-normal"
 

@@ -15,9 +15,13 @@ func play_idle_animation():
 	animation_player3.play("idleto-normal")
 
 func on_select_pressed():
-	if ResourceLoader.exists("res://scenes/Main.tscn"):
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/Main.tscn")
-		Global.selected_character = selected_character
+	Global.selected_character = selected_character
+	var player_state = SaveManager.get_player_state()
+	var saved_scene: String = player_state.get("current_scene", "")
+	if saved_scene.is_empty() or not ResourceLoader.exists(saved_scene):
+		saved_scene = "res://scenes/Main.tscn"
+	if ResourceLoader.exists(saved_scene):
+		get_tree().call_deferred("change_scene_to_file", saved_scene)
 
 func _on_select_button_2_pressed():
 	selected_character = "Farmer"

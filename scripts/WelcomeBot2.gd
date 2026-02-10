@@ -10,7 +10,6 @@ func _create_quest():
 	quest = QuestManager.available_quests["quest2"]
 
 func _start_quest():
-	print(npc_name, ": _start_quest called")
 	QuestManager.start(quest.id)
 	emit_signal("quest_started")
 	DialogueSystem.start_dialogue(npc_name, [
@@ -18,9 +17,7 @@ func _start_quest():
 		"I've opened the door for you.",
 		"Feel free to explore!",
 	])
-	print(npc_name, ": Dialogue started")
 	await DialogueSystem.dialogue_ended
-	print(npc_name, ": Dialogue ended")
 	QuestManager.update(quest.id)
 
 func _check_quest_progress():
@@ -38,5 +35,5 @@ func _check_quest_progress():
 
 func _on_quest_manager_quest_completed(quest_id):
 	if quest_id == quest.id:
-		print("Quest2 completed!")
 		# Add any specific actions for completing the red quest
+		pass

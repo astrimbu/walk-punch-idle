@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b3odx78ibytc5"]
 
-[ext_resource type="Script" path="res://scripts/WelcomeBot.gd" id="1_14ixu"]
+[ext_resource type="Script" uid="uid://od5ia42b0dg1" path="res://scripts/WelcomeBot.gd" id="1_14ixu"]
 [ext_resource type="Texture2D" uid="uid://b6j70nhc14kw5" path="res://assets/welcomebot-idleto.png" id="1_ckkrw"]
 [ext_resource type="Texture2D" uid="uid://lmibr67eclp1" path="res://assets/shadow.png" id="2_ja8ep"]
 [ext_resource type="Texture2D" uid="uid://depa30jggxgxo" path="res://assets/exclamation.png" id="3_b8j7p"]
@@ -112,8 +112,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tk71v"]
 _data = {
-"RESET": SubResource("Animation_ds4mj"),
-"idleto": SubResource("Animation_e4trn")
+&"RESET": SubResource("Animation_ds4mj"),
+&"idleto": SubResource("Animation_e4trn")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0frfy"]
@@ -229,8 +229,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8htxe"]
 _data = {
-"RESET": SubResource("Animation_ljens"),
-"rotate": SubResource("Animation_q4k6e")
+&"RESET": SubResource("Animation_ljens"),
+&"rotate": SubResource("Animation_q4k6e")
 }
 
 [node name="WelcomeBot" type="CharacterBody2D" groups=["npc"]]
@@ -253,7 +253,7 @@ texture = ExtResource("2_ja8ep")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_tk71v")
+&"": SubResource("AnimationLibrary_tk71v")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -276,7 +276,7 @@ hframes = 20
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8htxe")
+&"": SubResource("AnimationLibrary_8htxe")
 }
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]

@@ -16,6 +16,8 @@ var max_zoom = 2.0
 
 var target_indicator: Node2D
 
+var _last_save_time_ms: int = 0
+
 # draw indicator under the player
 var TargetIndicator = preload("res://scenes/TargetIndicator.tscn")
 const TARGET_INDICATOR_LAYER = 1
@@ -37,7 +39,7 @@ func _ready():
 	add_to_group("player")
 
 func _input(event):
-	var cookies_ui = get_node("/root/Level2/CookiesLayer/Cookies")
+	var cookies_ui = get_tree().get_first_node_in_group("cookies_ui")
 	if cookies_ui and cookies_ui.visible:
 		return
 
@@ -47,7 +49,6 @@ func _input(event):
 	if event is InputEventMouseButton:
 		# click
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			print("clicked ", get_global_mouse_position())
 			var clicked_object = get_clicked_object()
 			if clicked_object:
 				if clicked_object.collision_layer & 4:  # Direct Interaction (Layer 3)
@@ -131,5 +132,8 @@ func remove_target_indicator():
 		target_indicator.queue_free()
 		target_indicator = null
 
-func _process(delta):
-	SaveManager.update_player_state(global_position, get_tree().current_scene.scene_file_path)
+func _process(_delta):
+	var now_ms = Time.get_ticks_msec()
+	if now_ms - _last_save_time_ms >= 1000:
+		_last_save_time_ms = now_ms
+		SaveManager.update_player_state(global_position, get_tree().current_scene.scene_file_path)

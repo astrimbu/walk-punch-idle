@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8i3dlklqh0no"]
 
-[ext_resource type="Script" path="res://scripts/StaticUI.gd" id="1_re8gt"]
-[ext_resource type="Script" path="res://scripts/QuestUI.gd" id="2_6jnpk"]
+[ext_resource type="Script" uid="uid://on1nbh5o62pt" path="res://scripts/StaticUI.gd" id="1_re8gt"]
+[ext_resource type="Script" uid="uid://dr5pdknrvhlmh" path="res://scripts/QuestUI.gd" id="2_6jnpk"]
 
 [node name="StaticUI" type="CanvasLayer"]
 script = ExtResource("1_re8gt")

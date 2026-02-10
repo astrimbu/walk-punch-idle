@@ -7,6 +7,25 @@ func _ready() -> void:
 	super._ready()
 	_check_quest_status()
 
+func _on_click_area_input_event(viewport, event, shape_idx):
+	if not (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
+		return
+	var current_time = Time.get_ticks_msec()
+	if current_time - last_click_time < 50:
+		return
+	last_click_time = current_time
+
+	if DialogueSystem.is_dialogue_active():
+		DialogueSystem.next_dialogue()
+	elif quest and quest.id in QuestManager.available_quests:
+		_start_quest()
+	elif quest and quest.id in QuestManager.active_quests:
+		_check_quest_progress()
+	elif SaveManager.is_quest_completed("intro_quest"):
+		DialogueSystem.start_dialogue(npc_name, [
+			"Hello again, adventurer! Thanks again for your help.",
+		])
+
 func _setup_animations():
 	ap.play("idleto")
 	ap2.play("rotate")
@@ -29,7 +48,6 @@ func _start_quest():
 		])
 		return
 
-	print("WelcomeBot: _start_quest called")
 	QuestManager.start(quest.id)
 	em.visible = false
 	DialogueSystem.start_dialogue(npc_name, [
@@ -37,9 +55,7 @@ func _start_quest():
 		"Would you go to the other side of the map and check if everything is alright?",
 		"Come back to me when you're done, and I'll reward you for your help!",
 	])
-	print("WelcomeBot: Dialogue started")
 	await DialogueSystem.dialogue_ended
-	print("WelcomeBot: Dialogue ended")
 	QuestManager.update(quest.id)
 
 func _check_quest_progress():

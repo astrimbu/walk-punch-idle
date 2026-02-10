@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bedjam34vn2od"]
 
-[ext_resource type="Script" path="res://scripts/DialogueUI.gd" id="1_u8r5s"]
+[ext_resource type="Script" uid="uid://g7fomi6vsh7a" path="res://scripts/DialogueUI.gd" id="1_u8r5s"]
 
 [node name="DialogueUI" type="CanvasLayer"]
 follow_viewport_enabled = true

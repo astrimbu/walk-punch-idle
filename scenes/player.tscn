@@ -1,6 +1,6 @@
 [gd_scene load_steps=58 format=3 uid="uid://2mm3l2yfl6x1"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_2p0we"]
+[ext_resource type="Script" uid="uid://c118mahw3s8lb" path="res://scripts/Player.gd" id="1_2p0we"]
 [ext_resource type="Texture2D" uid="uid://lmibr67eclp1" path="res://assets/shadow.png" id="3_pqee8"]
 [ext_resource type="Texture2D" uid="uid://c0kp2uv1x8ynt" path="res://assets/smiley-idleto.png" id="16_xah1e"]
 [ext_resource type="Texture2D" uid="uid://b8tagm8lmj43a" path="res://assets/smiley-idleto45.png" id="17_hc646"]
@@ -889,22 +889,22 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m53ad"]
 _data = {
-"RESET": SubResource("Animation_hvtre"),
-"gangnam": SubResource("Animation_tqtop"),
-"gangnamaway": SubResource("Animation_rcoxx"),
-"gangnamaway45": SubResource("Animation_jw7q4"),
-"gangnamto": SubResource("Animation_dwyis"),
-"gangnamto45": SubResource("Animation_vo6sg"),
-"idle": SubResource("Animation_k0ti2"),
-"idleaway": SubResource("Animation_4nofa"),
-"idleaway45": SubResource("Animation_ebu1p"),
-"idleto": SubResource("Animation_2yqpv"),
-"idleto45": SubResource("Animation_c2104"),
-"walk": SubResource("Animation_omm2i"),
-"walkaway": SubResource("Animation_p7nb0"),
-"walkaway45": SubResource("Animation_p58pp"),
-"walkto": SubResource("Animation_x8mal"),
-"walkto45": SubResource("Animation_u57xl")
+&"RESET": SubResource("Animation_hvtre"),
+&"gangnam": SubResource("Animation_tqtop"),
+&"gangnamaway": SubResource("Animation_rcoxx"),
+&"gangnamaway45": SubResource("Animation_jw7q4"),
+&"gangnamto": SubResource("Animation_dwyis"),
+&"gangnamto45": SubResource("Animation_vo6sg"),
+&"idle": SubResource("Animation_k0ti2"),
+&"idleaway": SubResource("Animation_4nofa"),
+&"idleaway45": SubResource("Animation_ebu1p"),
+&"idleto": SubResource("Animation_2yqpv"),
+&"idleto45": SubResource("Animation_c2104"),
+&"walk": SubResource("Animation_omm2i"),
+&"walkaway": SubResource("Animation_p7nb0"),
+&"walkaway45": SubResource("Animation_p58pp"),
+&"walkto": SubResource("Animation_x8mal"),
+&"walkto45": SubResource("Animation_u57xl")
 }
 
 [sub_resource type="Animation" id="Animation_n0i1i"]
@@ -1499,17 +1499,17 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0jx6b"]
 _data = {
-"RESET": SubResource("Animation_n0i1i"),
-"idle": SubResource("Animation_kvtvq"),
-"idleaway": SubResource("Animation_eno7r"),
-"idleaway45": SubResource("Animation_ch8l5"),
-"idleto": SubResource("Animation_xuiia"),
-"idleto45": SubResource("Animation_23hf8"),
-"walk": SubResource("Animation_014lb"),
-"walkaway": SubResource("Animation_k6cog"),
-"walkaway45": SubResource("Animation_u4p1i"),
-"walkto": SubResource("Animation_7gm33"),
-"walkto45": SubResource("Animation_umhf4")
+&"RESET": SubResource("Animation_n0i1i"),
+&"idle": SubResource("Animation_kvtvq"),
+&"idleaway": SubResource("Animation_eno7r"),
+&"idleaway45": SubResource("Animation_ch8l5"),
+&"idleto": SubResource("Animation_xuiia"),
+&"idleto45": SubResource("Animation_23hf8"),
+&"walk": SubResource("Animation_014lb"),
+&"walkaway": SubResource("Animation_k6cog"),
+&"walkaway45": SubResource("Animation_u4p1i"),
+&"walkto": SubResource("Animation_7gm33"),
+&"walkto45": SubResource("Animation_umhf4")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
@@ -1542,7 +1542,7 @@ shape = SubResource("RectangleShape2D_k7trx")
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D2")
 libraries = {
-"": SubResource("AnimationLibrary_m53ad")
+&"": SubResource("AnimationLibrary_m53ad")
 }
 autoplay = "idleto"
 
@@ -1566,7 +1566,7 @@ shape = SubResource("RectangleShape2D_k7trx")
 
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0jx6b")
+&"": SubResource("AnimationLibrary_0jx6b")
 }
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]

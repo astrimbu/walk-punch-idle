@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=4 uid="uid://b1mbewc7mg7yv"]
 
-[ext_resource type="Script" path="res://scripts/Main.gd" id="1_aqnmy"]
+[ext_resource type="Script" uid="uid://djn4ggthdqmaw" path="res://scripts/Main.gd" id="1_aqnmy"]
 [ext_resource type="Texture2D" uid="uid://d3eybnjeurcf4" path="res://assets/TX Tileset Grass.png" id="2_30k4b"]
 [ext_resource type="TileSet" uid="uid://bqmjmck20y2st" path="res://assets/TX Props.tres" id="3_j8tqy"]
 [ext_resource type="PackedScene" uid="uid://2mm3l2yfl6x1" path="res://scenes/Player.tscn" id="4_0s7nw"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://7b2ttkegovcv" path="res://assets/fountain.png" id="5_5xnqy"]
 [ext_resource type="Texture2D" uid="uid://ddu58cvwepq7c" path="res://assets/house2.png" id="5_abiqj"]
 [ext_resource type="Texture2D" uid="uid://db24emywi5ib5" path="res://assets/tavern.png" id="6_3og8h"]
-[ext_resource type="Script" path="res://scripts/QuestArea.gd" id="7_jt8wh"]
+[ext_resource type="Script" uid="uid://df4d3bnn0saux" path="res://scripts/QuestArea.gd" id="7_jt8wh"]
 [ext_resource type="PackedScene" uid="uid://bedjam34vn2od" path="res://scenes/DialogueUI.tscn" id="7_juxfh"]
 [ext_resource type="Texture2D" uid="uid://bq6rltjbtma7o" path="res://assets/whitehouse.png" id="7_oeaby"]
 [ext_resource type="PackedScene" uid="uid://c8i3dlklqh0no" path="res://scenes/StaticUI.tscn" id="8_2w2uj"]
