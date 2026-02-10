@@ -38,6 +38,10 @@ func _ready():
 	character_animations.connect("animation_finished", Callable(self, "_on_animation_finished"))
 	add_to_group("player")
 
+	# Smooth camera follow (no rigid lock to player)
+	camera.position_smoothing_enabled = true
+	camera.position_smoothing_speed = 10.0
+
 func _input(event):
 	var cookies_ui = get_tree().get_first_node_in_group("cookies_ui")
 	if cookies_ui and cookies_ui.visible:

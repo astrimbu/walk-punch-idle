@@ -9,4 +9,5 @@ func _init(player: CharacterBody2D):
 
 func play_punch_animation(last_direction: Vector2):
 	_flip_sprite(last_direction.x)
+	animation_player.speed_scale = 1.0
 	_play_directional_animation("gangnam", last_direction)

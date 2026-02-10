@@ -17,14 +17,21 @@ func _on_animation_player_finished(anim_name: String):
 
 func play_walk_animation(direction: Vector2):
 	_flip_sprite(direction.x)
-	_play_directional_animation("walk", direction)
+	var anim_name = _play_directional_animation("walk", direction)
+	# Scale walk animation so one cycle = 1 second, matching move speed (no sliding)
+	if anim_name and animation_player.has_animation(anim_name):
+		animation_player.speed_scale = animation_player.get_animation(anim_name).length
+	else:
+		animation_player.speed_scale = 1.0
 
 func play_idle_animation(last_direction: Vector2):
 	_flip_sprite(last_direction.x)
+	animation_player.speed_scale = 1.0
 	_play_directional_animation("idle", last_direction)
 
 func play_punch_animation(last_direction: Vector2):
 	_flip_sprite(last_direction.x)
+	animation_player.speed_scale = 1.0
 	_play_directional_animation("punch", last_direction)
 
 func show_sprite():
@@ -44,7 +51,7 @@ func _flip_sprite(x_direction: float):
 	elif x_direction > 0:
 		sprite.scale.x = 1
 
-func _play_directional_animation(action: String, direction: Vector2):
+func _play_directional_animation(action: String, direction: Vector2) -> String:
 	var angle = _get_direction(direction)
 	var animation_name = action
 	match angle:
@@ -60,3 +67,4 @@ func _play_directional_animation(action: String, direction: Vector2):
 			animation_name += "away"
 	
 	animation_player.play(animation_name)
+	return animation_name
