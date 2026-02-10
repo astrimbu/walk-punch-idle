@@ -17,11 +17,26 @@ func _on_click_area_input_event(viewport, event, shape_idx):
 
 	if DialogueSystem.is_dialogue_active():
 		DialogueSystem.next_dialogue()
-	elif quest and quest.id in QuestManager.available_quests:
+		return
+
+	# Ensure intro quest exists in QuestManager when not completed
+	if not SaveManager.is_quest_completed("intro_quest"):
+		if "intro_quest" not in QuestManager.active_quests and "intro_quest" not in QuestManager.available_quests:
+			QuestManager.add_from_database("intro_quest")
+		# Keep quest reference in sync for _start_quest / _check_quest_progress
+		quest = QuestManager.available_quests.get("intro_quest") if QuestManager.available_quests.has("intro_quest") else QuestManager.active_quests.get("intro_quest")
+
+	# Start quest: available to take
+	if "intro_quest" in QuestManager.available_quests:
+		quest = QuestManager.available_quests["intro_quest"]
 		_start_quest()
-	elif quest and quest.id in QuestManager.active_quests:
+		return
+	# In progress
+	if quest and quest.id in QuestManager.active_quests:
 		_check_quest_progress()
-	elif SaveManager.is_quest_completed("intro_quest"):
+		return
+	# Already completed
+	if SaveManager.is_quest_completed("intro_quest"):
 		DialogueSystem.start_dialogue(npc_name, [
 			"Hello again, adventurer! Thanks again for your help.",
 		])
@@ -35,11 +50,20 @@ func _check_quest_status():
 		em.visible = false
 	else:
 		_create_quest()
+		# Ensure quest reference (e.g. restored in active_quests by load_character_state)
+		if not quest:
+			if "intro_quest" in QuestManager.active_quests:
+				quest = QuestManager.active_quests["intro_quest"]
+			elif "intro_quest" in QuestManager.available_quests:
+				quest = QuestManager.available_quests["intro_quest"]
 
 func _create_quest():
-	if not SaveManager.is_quest_completed("intro_quest"):
+	if SaveManager.is_quest_completed("intro_quest"):
+		return
+	# Only add if not already loaded (e.g. from save)
+	if "intro_quest" not in QuestManager.active_quests and "intro_quest" not in QuestManager.available_quests:
 		QuestManager.add_from_database("intro_quest")
-		quest = QuestManager.available_quests["intro_quest"]
+	quest = QuestManager.available_quests.get("intro_quest") if QuestManager.available_quests.has("intro_quest") else QuestManager.active_quests.get("intro_quest")
 
 func _start_quest():
 	if SaveManager.is_quest_completed("intro_quest"):

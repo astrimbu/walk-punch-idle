@@ -21,3 +21,6 @@ func advance_objective() -> bool:
 
 func get_current_objective() -> String:
 	return objectives[current_objective] if current_objective < objectives.size() else ""
+
+func set_objective_index(index: int) -> void:
+	current_objective = clampi(index, 0, objectives.size() - 1)

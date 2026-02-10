@@ -10,6 +10,19 @@ var selected_character = "Smiley"  # Default character
 func _ready():
 	play_idle_animation()
 
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		go_back()
+
+func go_back() -> void:
+	var return_scene = Global.character_select_return_scene if Global.character_select_return_scene else "res://scenes/SaveSlotSelect.tscn"
+	if return_scene.is_empty() or not ResourceLoader.exists(return_scene):
+		return_scene = "res://scenes/SaveSlotSelect.tscn"
+	get_tree().change_scene_to_file(return_scene)
+
+func _on_back_to_save_select_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/SaveSlotSelect.tscn")
+
 func play_idle_animation():
 	animation_player2.play("idleto-normal")
 	animation_player3.play("idleto-normal")

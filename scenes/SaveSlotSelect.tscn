@@ -1,0 +1,143 @@
+[gd_scene load_steps=2 format=3 uid="uid://wsvb3miwxv8n"]
+
+[ext_resource type="Script" uid="uid://cntrx2m8ep13i" path="res://scripts/SaveSlotSelect.gd" id="1_script"]
+
+[node name="SaveSlotSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="UI" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="UI"]
+layout_mode = 2
+text = "Select Save Slot"
+horizontal_alignment = 1
+
+[node name="Slot1" type="VBoxContainer" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Summary" type="Label" parent="UI/Slot1"]
+layout_mode = 2
+text = "Slot 1: Empty"
+
+[node name="Buttons" type="HBoxContainer" parent="UI/Slot1"]
+layout_mode = 2
+
+[node name="LoadBtn" type="Button" parent="UI/Slot1/Buttons"]
+layout_mode = 2
+text = "Load"
+
+[node name="NewBtn" type="Button" parent="UI/Slot1/Buttons"]
+layout_mode = 2
+text = "New Game"
+
+[node name="DeleteBtn" type="Button" parent="UI/Slot1/Buttons"]
+layout_mode = 2
+text = "Delete"
+
+[node name="Slot2" type="VBoxContainer" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Summary" type="Label" parent="UI/Slot2"]
+layout_mode = 2
+text = "Slot 2: Empty"
+
+[node name="Buttons" type="HBoxContainer" parent="UI/Slot2"]
+layout_mode = 2
+
+[node name="LoadBtn" type="Button" parent="UI/Slot2/Buttons"]
+layout_mode = 2
+text = "Load"
+
+[node name="NewBtn" type="Button" parent="UI/Slot2/Buttons"]
+layout_mode = 2
+text = "New Game"
+
+[node name="DeleteBtn" type="Button" parent="UI/Slot2/Buttons"]
+layout_mode = 2
+text = "Delete"
+
+[node name="Slot3" type="VBoxContainer" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Summary" type="Label" parent="UI/Slot3"]
+layout_mode = 2
+text = "Slot 3: Empty"
+
+[node name="Buttons" type="HBoxContainer" parent="UI/Slot3"]
+layout_mode = 2
+
+[node name="LoadBtn" type="Button" parent="UI/Slot3/Buttons"]
+layout_mode = 2
+text = "Load"
+
+[node name="NewBtn" type="Button" parent="UI/Slot3/Buttons"]
+layout_mode = 2
+text = "New Game"
+
+[node name="DeleteBtn" type="Button" parent="UI/Slot3/Buttons"]
+layout_mode = 2
+text = "Delete"
+
+[node name="Slot4" type="VBoxContainer" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Summary" type="Label" parent="UI/Slot4"]
+layout_mode = 2
+text = "Slot 4: Empty"
+
+[node name="Buttons" type="HBoxContainer" parent="UI/Slot4"]
+layout_mode = 2
+
+[node name="LoadBtn" type="Button" parent="UI/Slot4/Buttons"]
+layout_mode = 2
+text = "Load"
+
+[node name="NewBtn" type="Button" parent="UI/Slot4/Buttons"]
+layout_mode = 2
+text = "New Game"
+
+[node name="DeleteBtn" type="Button" parent="UI/Slot4/Buttons"]
+layout_mode = 2
+text = "Delete"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Confirm"
+dialog_text = "Are you sure?"
+
+[connection signal="pressed" from="UI/Slot1/Buttons/LoadBtn" to="." method="_on_slot_1_load"]
+[connection signal="pressed" from="UI/Slot1/Buttons/NewBtn" to="." method="_on_slot_1_new"]
+[connection signal="pressed" from="UI/Slot1/Buttons/DeleteBtn" to="." method="_on_slot_1_delete"]
+[connection signal="pressed" from="UI/Slot2/Buttons/LoadBtn" to="." method="_on_slot_2_load"]
+[connection signal="pressed" from="UI/Slot2/Buttons/NewBtn" to="." method="_on_slot_2_new"]
+[connection signal="pressed" from="UI/Slot2/Buttons/DeleteBtn" to="." method="_on_slot_2_delete"]
+[connection signal="pressed" from="UI/Slot3/Buttons/LoadBtn" to="." method="_on_slot_3_load"]
+[connection signal="pressed" from="UI/Slot3/Buttons/NewBtn" to="." method="_on_slot_3_new"]
+[connection signal="pressed" from="UI/Slot3/Buttons/DeleteBtn" to="." method="_on_slot_3_delete"]
+[connection signal="pressed" from="UI/Slot4/Buttons/LoadBtn" to="." method="_on_slot_4_load"]
+[connection signal="pressed" from="UI/Slot4/Buttons/NewBtn" to="." method="_on_slot_4_new"]
+[connection signal="pressed" from="UI/Slot4/Buttons/DeleteBtn" to="." method="_on_slot_4_delete"]

@@ -200,6 +200,16 @@ grow_horizontal = 2
 text = "Choose Your Character"
 horizontal_alignment = 1
 
+[node name="BackToSaveSelect" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 52.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back to Save Select"
+
 [node name="SelectButton2" type="Button" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 7
@@ -288,5 +298,6 @@ libraries = {
 }
 autoplay = "idleto-normal"
 
+[connection signal="pressed" from="CanvasLayer/UI/BackToSaveSelect" to="." method="_on_back_to_save_select_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/SelectButton2" to="." method="_on_select_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/SelectButton3" to="." method="_on_select_button_3_pressed"]
