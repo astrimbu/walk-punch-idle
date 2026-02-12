@@ -30,7 +30,10 @@ func _on_dialogue_system_dialogue_started(npc_name, dialogue):
 		dialogue_label.text = dialogue
 	else:
 		dialogue_label.text = current_npc_name + ": " + dialogue
+	dialogue_label.modulate = Color(1, 1, 1, 0)
 	dialogue_label.visible = true
+	var t = create_tween()
+	t.tween_property(dialogue_label, "modulate", Color(1, 1, 1, 1), 0.1).set_ease(Tween.EASE_OUT)
 
 func _on_dialogue_system_dialogue_ended():
 	dialogue_label.text = ""

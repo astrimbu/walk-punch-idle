@@ -27,6 +27,7 @@ NotificationSystem="*res://scripts/NotificationSystem.gd"
 DialogueSystem="*res://scripts/DialogueSystem.gd"
 QuestDatabase="*res://scripts/QuestDatabase.gd"
 SaveManager="*res://scripts/SaveManager.gd"
+SceneTransition="*res://scripts/SceneTransition.gd"
 
 [display]
 

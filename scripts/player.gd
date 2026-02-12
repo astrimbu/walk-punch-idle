@@ -14,9 +14,13 @@ var zoom_speed = 0.05
 var min_zoom = 0.5
 var max_zoom = 2.0
 
+@export var camera_dead_zone_half: Vector2 = Vector2(80, 50)
+
 var target_indicator: Node2D
 
 var _last_save_time_ms: int = 0
+var _zoom_tween: Tween
+var _camera_world_target: Vector2
 
 # draw indicator under the player
 var TargetIndicator = preload("res://scenes/TargetIndicator.tscn")
@@ -41,6 +45,7 @@ func _ready():
 	# Smooth camera follow (no rigid lock to player)
 	camera.position_smoothing_enabled = true
 	camera.position_smoothing_speed = 10.0
+	_camera_world_target = global_position
 
 func _input(event):
 	var cookies_ui = get_tree().get_first_node_in_group("cookies_ui")
@@ -104,6 +109,15 @@ func _physics_process(delta):
 		"punch":
 			character_animations.play_punch_animation(last_direction)
 
+	# Camera dead zone: only pan when player leaves center rectangle
+	var offset := global_position - _camera_world_target
+	var clamped_offset := Vector2(
+		clampf(offset.x, -camera_dead_zone_half.x, camera_dead_zone_half.x),
+		clampf(offset.y, -camera_dead_zone_half.y, camera_dead_zone_half.y)
+	)
+	_camera_world_target = global_position - clamped_offset
+	camera.position = _camera_world_target - global_position
+
 func _on_animation_finished(anim_name: String):
 	if anim_name.begins_with("punch") and current_state == "punch":
 		change_state("idle")
@@ -120,9 +134,11 @@ func change_state(new_state: String):
 			velocity = Vector2.ZERO
 
 func zoom_camera(zoom_factor):
-	var new_zoom = camera.zoom.x - zoom_factor
-	new_zoom = clamp(new_zoom, min_zoom, max_zoom)
-	camera.zoom = Vector2(new_zoom, new_zoom)
+	var target_zoom = clamp(camera.zoom.x - zoom_factor, min_zoom, max_zoom)
+	if _zoom_tween and _zoom_tween.is_valid():
+		_zoom_tween.kill()
+	_zoom_tween = create_tween()
+	_zoom_tween.tween_property(camera, "zoom", Vector2(target_zoom, target_zoom), 0.08).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 
 func show_target_indicator(pos: Vector2):
 	remove_target_indicator()
@@ -133,7 +149,10 @@ func show_target_indicator(pos: Vector2):
 
 func remove_target_indicator():
 	if target_indicator:
-		target_indicator.queue_free()
+		if target_indicator.has_method("dismiss"):
+			target_indicator.dismiss()
+		else:
+			target_indicator.queue_free()
 		target_indicator = null
 
 func _process(_delta):

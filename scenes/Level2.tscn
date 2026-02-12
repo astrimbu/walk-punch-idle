@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bq4ie0jswscqw"]
+[gd_scene format=4 uid="uid://bq4ie0jswscqw"]
 
 [ext_resource type="PackedScene" uid="uid://2mm3l2yfl6x1" path="res://scenes/Player.tscn" id="1_0yrm7"]
 [ext_resource type="Script" uid="uid://b5nalnoom2n8q" path="res://scripts/Level2.gd" id="1_xks0w"]
@@ -135,56 +135,56 @@ sources/0 = SubResource("TileSetAtlasSource_aside")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2yac"]
 size = Vector2(32, 32)
 
-[node name="Level2" type="Node2D"]
+[node name="Level2" type="Node2D" unique_id=890252570]
 script = ExtResource("1_xks0w")
 
-[node name="CookiesLayer" type="CanvasLayer" parent="."]
+[node name="CookiesLayer" type="CanvasLayer" parent="." unique_id=1465210008]
 
-[node name="Cookies" parent="CookiesLayer" instance=ExtResource("11_px5r4")]
+[node name="Cookies" parent="CookiesLayer" unique_id=369668828 instance=ExtResource("11_px5r4")]
 
-[node name="YSort" type="Node2D" parent="."]
+[node name="YSort" type="Node2D" parent="." unique_id=1973238184]
 y_sort_enabled = true
 
-[node name="Door" type="StaticBody2D" parent="YSort"]
+[node name="Door" type="StaticBody2D" parent="YSort" unique_id=617580846]
 z_index = 1
 input_pickable = true
 script = ExtResource("12_baarv")
 
-[node name="Closed" type="Sprite2D" parent="YSort/Door"]
+[node name="Closed" type="Sprite2D" parent="YSort/Door" unique_id=368985162]
 position = Vector2(16, -80)
 texture = ExtResource("4_qvpla")
 region_enabled = true
 region_rect = Rect2(64, 512, 32, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Door"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Door" unique_id=1969439134]
 position = Vector2(16, -80)
 shape = SubResource("RectangleShape2D_ldfks")
 
-[node name="WelcomeBot2" parent="YSort" instance=ExtResource("2_f18ct")]
+[node name="WelcomeBot2" parent="YSort" unique_id=855429251 instance=ExtResource("2_f18ct")]
 z_index = 1
 position = Vector2(-51, -40)
 scale = Vector2(1.5, 1.5)
 npc_name = "WelcomeBot2"
 
-[node name="CookieBot" parent="YSort" groups=["npc"] instance=ExtResource("3_c8w0o")]
+[node name="CookieBot" parent="YSort" unique_id=827715949 groups=["npc"] instance=ExtResource("3_c8w0o")]
 position = Vector2(83, -49)
 
-[node name="Player" parent="YSort" instance=ExtResource("1_0yrm7")]
+[node name="Player" parent="YSort" unique_id=2113499036 instance=ExtResource("1_0yrm7")]
 y_sort_enabled = true
 position = Vector2(16, 0)
 
-[node name="Environment" type="TileMapLayer" parent="YSort"]
+[node name="Environment" type="TileMapLayer" parent="YSort" unique_id=1768340207]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD9//3/AQAAAAQAAAD9//7/AQAAAAQAAAD9////AQAAAAQAAAD9/wAAAQAAAAQAAAD9/wEAAQAAAAQAAAD9/wIAAQABAAQAAAD+/wIAAQABAAQAAAD//wIAAQABAAQAAAAAAAIAAQABAAQAAAABAAIAAQABAAQAAAD+//3/AQABAAQAAAD///3/AQABAAQAAAABAP3/AQABAAQAAAACAAIAAQABAAQAAAACAP3/AQABAAQAAAADAAIAAQABAAQAAAADAAEAAQAAAAQAAAADAAAAAQAAAAQAAAADAP//AQAAAAQAAAADAP7/AQAAAAQAAAADAP3/AQAAAAQAAAA=")
+tile_map_data = PackedByteArray("AAD9//3/AQAAAAQAAAD9//7/AQAAAAQAAAD9////AQAAAAQAAAD9/wAAAQAAAAQAAAD9/wEAAQAAAAQAAAD9/wIAAQABAAQAAAD+/wIAAQABAAQAAAD//wIAAQABAAQAAAAAAAIAAQABAAQAAAABAAIAAQABAAQAAAD+//3/AQABAAQAAAD///3/AQABAAQAAAABAP3/AQABAAQAAAACAAIAAQABAAQAAAACAP3/AQABAAQAAAADAAIAAQABAAQAAAADAAEAAQAAAAQAAAADAAAAAQAAAAQAAAADAP//AQAAAAQAAAADAP7/AQAAAAQAAAADAP3/AQAAAAQAAAD+/wEAAQAIABAAAAA=")
 tile_set = ExtResource("3_sqlvr")
 
-[node name="Ground" type="TileMapLayer" parent="."]
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1027870090]
 tile_map_data = PackedByteArray("AAD//wAAAAAAAAsAAAAAAAAAAAAAAAYAAAAAAP//AAAAAAsAAAD/////AAAAAAYAAAABAP7/AAAAAAsAAAAAAP7/AAAAAAYAAAD///7/AAAAAAsAAAD+//7/AAAAAAYAAAD+////AAAAAAsAAAD+/wAAAAAAAAYAAAD+/wEAAAAAAAsAAAD//wEAAAAAAAYAAAAAAAEAAAAAAAsAAAABAAAAAAAAAAsAAAABAP//AAAAAAYAAAABAAEAAAAAAAYAAAAAAP3/AAAAAAsAAAACAAEAAAAAAAsAAAACAP//AAAAAAsAAAACAAAAAAAAAAYAAAACAP7/AAAAAAYAAAA=")
 tile_set = SubResource("TileSet_1kfxl")
 collision_enabled = false
 
-[node name="QuestArea" type="Area2D" parent="."]
+[node name="QuestArea" type="Area2D" parent="." unique_id=327903481]
 visible = false
 position = Vector2(40, 40)
 collision_layer = 16
@@ -193,22 +193,21 @@ script = ExtResource("5_lep2w")
 quest_id = "intro_quest"
 objective_index = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestArea" unique_id=2112698419]
 visible = false
 position = Vector2(40, 8)
 shape = SubResource("RectangleShape2D_q2yac")
 
-[node name="DialogueUI" parent="." instance=ExtResource("6_w6ymb")]
+[node name="DialogueUI" parent="." unique_id=1291608744 instance=ExtResource("6_w6ymb")]
 dialogue_position = Vector2(-104, -100)
 dialogue_size = Vector2(112, 1)
 
-[node name="StaticUI" parent="." instance=ExtResource("7_vjo6c")]
+[node name="StaticUI" parent="." unique_id=1190905805 instance=ExtResource("7_vjo6c")]
 
-[node name="Portals" type="Node2D" parent="."]
+[node name="Portals" type="Node2D" parent="." unique_id=2024373304]
 
-[node name="PortalToMain" parent="Portals" instance=ExtResource("9_yw7we")]
+[node name="PortalToMain" parent="Portals" unique_id=2067781988 instance=ExtResource("9_yw7we")]
 position = Vector2(-48, 48)
-scale = Vector2(0.5, 0.5)
 target_scene = "res://scenes/Main.tscn"
 
 [connection signal="quest_started" from="YSort/WelcomeBot2" to="YSort/Door" method="unlock"]
